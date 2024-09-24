@@ -1,0 +1,55 @@
+{
+  "name": "@w3stream/nodejs-client",
+  "version": "1.0.0",
+  "description": "w3stream nodejs API client",
+   "keywords": [
+    "w3stream",
+    "api",
+    "video",
+    "client"
+  ],
+  "homepage": "https://github.com/AIOZNetwork/w3stream-nodejs-client#readme",
+  "bugs:": "https://github.com/AIOZNetwork/w3stream-nodejs-client/issues",
+  "license": "MIT",
+  "author": "w3stream <support@w3stream.xyz>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AIOZNetwork/w3stream-nodejs-client"
+  },
+  "main": "lib/index.js",
+  "module": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "src/",
+    "lib/",
+    "dist/",
+    "doc/"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build",
+    "clean": "rm -rf dist && rm -rf lib",
+    "test": "jest",
+    "eslint": "eslint 'src/**/*.ts' 'test/**/*.ts'",
+    "prettier": "prettier --ignore-path .gitignore --write \"**/*.ts\" && npx eslint src/ test/ --fix"
+  },
+  "dependencies": {
+    "axios": "^1.4.0",
+    "js-base64": "^3.7.5"
+  },
+  "devDependencies": {
+    "@tsconfig/node14": "^14.1.0",
+    "@types/node": "^20.3.3",
+    "@typescript-eslint/eslint-plugin": "^5.61.0",
+    "@typescript-eslint/parser": "^5.61.0",
+    "eslint": "^8.44.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-unused-imports": "^2.0.0",
+    "@types/jest": "^29.5.2",
+    "jest": "^29.6.0",
+    "ts-jest": "^29.1.1",
+    "typescript": "^5.1.6",
+    "prettier": "^2.8.8"
+  }
+}
