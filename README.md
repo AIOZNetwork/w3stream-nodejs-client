@@ -12,7 +12,7 @@ W3Stream's Node.js is a lightweight client built in `TypeScript` that streamline
 ### Installation
 With `npm`:
 ```
-npm install @w3stream/nodejs-client --save
+npm install @w3stream/nodejs-client
 ```
 
 ...or with `yarn`:
@@ -69,20 +69,20 @@ const W3StreamClient = require('@w3stream/nodejs-client');
 
 ## Documentation
 
-### API Endpoints
+### API endpoints
 
 
-#### ApiKeyApi
+#### API key
 
 Method | Description | HTTP request
 ------------- | ------------- | -------------
 [**create()**](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/api/ApiKeyApi.md#create) | Create API key | **POST** `/api_keys`
-[**update()**](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/api/ApiKeyApi.md#update) | Rename api key | **PATCH** `/api_keys/{id}`
+[**update()**](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/api/ApiKeyApi.md#update) | Rename API key | **PATCH** `/api_keys/{id}`
 [**delete()**](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/api/ApiKeyApi.md#delete) | Delete API key | **DELETE** `/api_keys/{id}`
 [**list()**](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/api/ApiKeyApi.md#list) | Get list API keys | **GET** `/api_keys`
 
 
-#### PlayersApi
+#### Players
 
 Method | Description | HTTP request
 ------------- | ------------- | -------------
@@ -97,7 +97,7 @@ Method | Description | HTTP request
 [**removePlayer()**](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/api/PlayersApi.md#removePlayer) | Remove a player theme from a video | **POST** `/players/remove-player`
 
 
-#### VideoApi
+#### Video
 
 Method | Description | HTTP request
 ------------- | ------------- | -------------
@@ -105,27 +105,27 @@ Method | Description | HTTP request
 [**update()**](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/api/VideoApi.md#update) | update video info | **PATCH** `/videos/{id}`
 [**delete()**](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/api/VideoApi.md#delete) | Delete video | **DELETE** `/videos/{id}`
 [**uploadThumbnail()**](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/api/VideoApi.md#uploadThumbnail) | Upload video thumbnail | **POST** `/videos/{id}/thumbnail`
-[**createCaption()**](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/api/VideoApi.md#createCaption) | Create a new video caption | **POST** `/videos/{id}/caption/{lan}`
-[**deleteCaption()**](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/api/VideoApi.md#deleteCaption) | Delete a video caption | **DELETE** `/videos/{id}/caption/{lan}`
+[**createCaption()**](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/api/VideoApi.md#createCaption) | Create a new video caption | **POST** `/videos/{id}/captions/{lan}`
+[**deleteCaption()**](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/api/VideoApi.md#deleteCaption) | Delete a video caption | **DELETE** `/videos/{id}/captions/{lan}`
 [**getCaptions()**](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/api/VideoApi.md#getCaptions) | Get video captions | **GET** `/videos/{id}/captions`
 [**getCost()**](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/api/VideoApi.md#getCost) | get video transcoding cost | **GET** `/videos/cost`
 [**getDetail()**](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/api/VideoApi.md#getDetail) | get video detail | **GET** `/videos/{id}`
 [**getVideoList()**](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/api/VideoApi.md#getVideoList) | Get user videos list | **POST** `/videos`
-[**setCaption()**](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/api/VideoApi.md#setCaption) | Set default video caption | **PATCH** `/videos/{id}/caption/{lan}`
+[**setCaption()**](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/api/VideoApi.md#setCaption) | Set default video caption | **PATCH** `/videos/{id}/captions/{lan}`
 [**uploadPart()**](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/api/VideoApi.md#uploadPart) | Upload part of video | **POST** `/videos/{id}/part`
 [**uploadVideoComplete()**](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/api/VideoApi.md#uploadVideoComplete) | Get upload video when complete | **GET** `/videos/{id}/complete`
 
 
-#### VideoChapterApi
+#### Video chapter
 
 Method | Description | HTTP request
 ------------- | ------------- | -------------
-[**create()**](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/api/VideoChapterApi.md#create) | Create a video chapter | **POST** `/videos/{id}/chapter/{lan}`
+[**create()**](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/api/VideoChapterApi.md#create) | Create a video chapter | **POST** `/videos/{id}/chapters/{lan}`
 [**get()**](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/api/VideoChapterApi.md#get) | Get video chapters | **GET** `/videos/{id}/chapters`
-[**delete()**](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/api/VideoChapterApi.md#delete) | Delete a video chapter | **DELETE** `/videos/{id}/chapter/{lan}`
+[**delete()**](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/api/VideoChapterApi.md#delete) | Delete a video chapter | **DELETE** `/videos/{id}/chapters/{lan}`
 
 
-#### WatermarkApi
+#### Watermark
 
 Method | Description | HTTP request
 ------------- | ------------- | -------------
@@ -134,7 +134,7 @@ Method | Description | HTTP request
 [**list()**](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/api/WatermarkApi.md#list) | List all watermarks | **GET** `/watermarks`
 
 
-#### WebhookApi
+#### Webhook
 
 Method | Description | HTTP request
 ------------- | ------------- | -------------
@@ -217,8 +217,7 @@ Method | Description | HTTP request
 
 ### Rate Limiting
 
-W3Stream implements rate limiting to ensure fair usage and stability of the service. The API provides the rate limit values in the response headers for any API requests you make. The /auth endpoint is the only route without rate limitation.
-
+W3Stream implements rate limiting to ensure fair usage and stability of the service. The API provides the rate limit values in the response headers for any API requests you make. 
 In this Node.js client, you can access these headers by using the `*WithResponseHeaders()` versions of the methods. These methods return both the response body and the headers, allowing you to check the `X-RateLimit-Limit`, `X-RateLimit-Remaining`, and `X-RateLimit-Retry-After` headers to understand your current rate limit status.
 
 
@@ -235,12 +234,11 @@ const { headers, body } = const webhook = await client.webhook.listWithResponseH
 
 ### Authorization
 
-#### API key and Public key
+#### API key and public key
 
-Most endpoints required to be authenticated using the API key and Public key mechanism described in our [documentation](https://w3stream.xyz/docs/video-management/api-key-management).
-The access token generation mechanism is automatically handled by the client.
+All endpoints required to be authenticated using the API key and public key mechanism described in our [documentation](https://w3stream.xyz/docs/video-management/api-key-management).
 
-All you have to do is provide an API key and Public key when instantiating the W3StreamClient:
+All you have to do is provide an API key and public key when instantiating the W3StreamClient:
 ```js
 const client = new W3StreamClient({
   secretKey: "YOUR_SECRET_KEY",

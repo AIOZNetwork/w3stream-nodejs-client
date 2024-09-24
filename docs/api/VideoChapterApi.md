@@ -4,9 +4,9 @@ All URIs are relative to *http://localhost/api*
 
 | Method | Description | HTTP request |
 | ------------- | ------------- | ------------- |
-| [**create()**](VideoChapterApi.md#create) | Create a video chapter | **POST** /videos/{id}/chapter/{lan} |
+| [**create()**](VideoChapterApi.md#create) | Create a video chapter | **POST** /videos/{id}/chapters/{lan} |
 | [**get()**](VideoChapterApi.md#get) | Get video chapters | **GET** /videos/{id}/chapters |
-| [**delete()**](VideoChapterApi.md#delete) | Delete a video chapter | **DELETE** /videos/{id}/chapter/{lan} |
+| [**delete()**](VideoChapterApi.md#delete) | Delete a video chapter | **DELETE** /videos/{id}/chapters/{lan} |
 
 
 <a name="create"></a>

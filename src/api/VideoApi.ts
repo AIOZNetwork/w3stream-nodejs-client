@@ -335,7 +335,7 @@ export default class VideoApi {
     }
 
     // Path Params
-    const localVarPath = '/videos/{id}/caption/{lan}'
+    const localVarPath = '/videos/{id}/captions/{lan}'
       .substring(1)
       .replace('{' + 'id' + '}', encodeURIComponent(String(id)))
       .replace('{' + 'lan' + '}', encodeURIComponent(String(lan)));
@@ -400,7 +400,7 @@ export default class VideoApi {
       );
     }
     // Path Params
-    const localVarPath = '/videos/{id}/caption/{lan}'
+    const localVarPath = '/videos/{id}/captions/{lan}'
       .substring(1)
       .replace('{' + 'id' + '}', encodeURIComponent(String(id)))
       .replace('{' + 'lan' + '}', encodeURIComponent(String(lan)));
@@ -729,7 +729,7 @@ export default class VideoApi {
       );
     }
     // Path Params
-    const localVarPath = '/videos/{id}/caption/{lan}'
+    const localVarPath = '/videos/{id}/captions/{lan}'
       .substring(1)
       .replace('{' + 'id' + '}', encodeURIComponent(String(id)))
       .replace('{' + 'lan' + '}', encodeURIComponent(String(lan)));

@@ -8,13 +8,13 @@ All URIs are relative to *http://localhost/api*
 | [**update()**](VideoApi.md#update) | update video info | **PATCH** /videos/{id} |
 | [**delete()**](VideoApi.md#delete) | Delete video | **DELETE** /videos/{id} |
 | [**uploadThumbnail()**](VideoApi.md#uploadThumbnail) | Upload video thumbnail | **POST** /videos/{id}/thumbnail |
-| [**createCaption()**](VideoApi.md#createCaption) | Create a new video caption | **POST** /videos/{id}/caption/{lan} |
-| [**deleteCaption()**](VideoApi.md#deleteCaption) | Delete a video caption | **DELETE** /videos/{id}/caption/{lan} |
+| [**createCaption()**](VideoApi.md#createCaption) | Create a new video caption | **POST** /videos/{id}/captions/{lan} |
+| [**deleteCaption()**](VideoApi.md#deleteCaption) | Delete a video caption | **DELETE** /videos/{id}/captions/{lan} |
 | [**getCaptions()**](VideoApi.md#getCaptions) | Get video captions | **GET** /videos/{id}/captions |
 | [**getCost()**](VideoApi.md#getCost) | get video transcoding cost | **GET** /videos/cost |
 | [**getDetail()**](VideoApi.md#getDetail) | get video detail | **GET** /videos/{id} |
 | [**getVideoList()**](VideoApi.md#getVideoList) | Get user videos list | **POST** /videos |
-| [**setCaption()**](VideoApi.md#setCaption) | Set default video caption | **PATCH** /videos/{id}/caption/{lan} |
+| [**setCaption()**](VideoApi.md#setCaption) | Set default video caption | **PATCH** /videos/{id}/captions/{lan} |
 | [**uploadPart()**](VideoApi.md#uploadPart) | Upload part of video | **POST** /videos/{id}/part |
 | [**uploadVideoComplete()**](VideoApi.md#uploadVideoComplete) | Get upload video when complete | **GET** /videos/{id}/complete |
 

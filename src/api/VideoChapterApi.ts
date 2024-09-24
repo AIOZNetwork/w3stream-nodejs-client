@@ -86,7 +86,7 @@ export default class VideoChapterApi {
     }
 
     // Path Params
-    const localVarPath = '/videos/{id}/chapter/{lan}'
+    const localVarPath = '/videos/{id}/chapters/{lan}'
       .substring(1)
       .replace('{' + 'id' + '}', encodeURIComponent(String(id)))
       .replace('{' + 'lan' + '}', encodeURIComponent(String(lan)));
@@ -226,7 +226,7 @@ export default class VideoChapterApi {
       );
     }
     // Path Params
-    const localVarPath = '/videos/{id}/chapter/{lan}'
+    const localVarPath = '/videos/{id}/chapters/{lan}'
       .substring(1)
       .replace('{' + 'id' + '}', encodeURIComponent(String(id)))
       .replace('{' + 'lan' + '}', encodeURIComponent(String(lan)));
