@@ -56,7 +56,7 @@ const W3StreamClient = require('@w3stream/nodejs-client');
         }
         // upload a video file into the video container
         const uploadResult = await client.video.uploadPart(video.data.id, "/path/to-your-video-file.mp4");
-        console.log(result)
+        console.log(uploadResult)
 
         // Check if the video upload is complete
         const uploadComplete = await client.video.uploadVideoComplete(video.data.id);
