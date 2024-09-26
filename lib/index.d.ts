@@ -14,6 +14,7 @@ import VideoApi from './api/VideoApi';
 import VideoChapterApi from './api/VideoChapterApi';
 import WatermarkApi from './api/WatermarkApi';
 import WebhookApi from './api/WebhookApi';
+import UploadProgressEvent from './model/UploadProgressEvent';
 declare class W3StreamClient {
     private httpClient;
     private _apiKey;
@@ -64,5 +65,6 @@ declare class W3StreamClient {
      */
     get webhook(): WebhookApi;
     private validateOrigin;
+    uploadVideo(id: string, file: string, progressListener?: (event: UploadProgressEvent) => void): Promise<void>;
 }
 export = W3StreamClient;

@@ -32,39 +32,44 @@ npm run build
 ### Code sample
 
 ```typescript
-const W3StreamClient = require('@w3stream/nodejs-client');
-// or: import W3StreamClient from '@w3stream/nodejs-client';
+import W3StreamClient from "@w3stream/nodejs-client";
 
 (async () => {
-    try {
-        const client = new W3StreamClient({ 
-          secretKey: "YOUR_SECRET_KEY", 
-          publicKey: "YOUR_PUBLIC_KEY"
-        });
+  try {
+    const client = new W3StreamClient({
+      publicKey: "YOUR_PUBLIC_KEY",
+      secretKey: "YOUR_SECRET_KEY",
+    });
+    const videoCreationPayload = {
+      title: "First video", // The title of your new video.
+      description: "A new video.", // A brief description of your video.
+    };
 
-        // create a video
-        const videoCreationPayload = {
-            title: "Maths video", // The title of your new video.
-            description: "A video about string theory.", // A brief description of your video.
-        };
-        const video = await client.video.create(videoCreationPayload);
-        if (!video.data) {
-          throw new Error("Failed to create video");
-        }
-        if (!video.data.id) {
-          throw new Error("Failed to create video");
-        }
-        // upload a video file into the video container
-        const uploadResult = await client.video.uploadPart(video.data.id, "/path/to-your-video-file.mp4");
-        console.log(uploadResult)
-
-        // Check if the video upload is complete
-        const uploadComplete = await client.video.uploadVideoComplete(video.data.id);
-        console.log(uploadComplete);
-    } catch (e) {
-        console.error(e);
+    const video = await client.video.create(videoCreationPayload);
+    if (!video.data) {
+      throw new Error("Failed to create video");
     }
+    if (!video.data.id) {
+      throw new Error("Failed to create video");
+    }
+    // Option 1: Use client upload with videoId
+    // await client.uploadVideo(video.data.id, "./path/to/video.mp4");
+    // console.log("Upload successfully");
+    // Option 2: Upload parts yourself
+    const uploadResult = await client.video.uploadPart(
+      video.data.id,
+      "./path/to/video.mp4",
+    );
+    console.log(uploadResult);
+
+    const checkResult = await client.video.uploadVideoComplete(video.data.id);
+    // Check if the video upload is complete
+    console.log(checkResult);
+  } catch (e) {
+    console.error(e);
+  }
 })();
+
 ```
 
 ## Documentation
@@ -72,7 +77,7 @@ const W3StreamClient = require('@w3stream/nodejs-client');
 ### API endpoints
 
 
-#### API key
+#### Api key
 
 Method | Description | HTTP request
 ------------- | ------------- | -------------
@@ -97,7 +102,7 @@ Method | Description | HTTP request
 [**removePlayer()**](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/api/PlayersApi.md#removePlayer) | Remove a player theme from a video | **POST** `/players/remove-player`
 
 
-#### Video
+#### VideoApi
 
 Method | Description | HTTP request
 ------------- | ------------- | -------------

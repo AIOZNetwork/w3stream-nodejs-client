@@ -17,6 +17,12 @@ import VideoApi from './api/VideoApi';
 import VideoChapterApi from './api/VideoChapterApi';
 import WatermarkApi from './api/WatermarkApi';
 import WebhookApi from './api/WebhookApi';
+import { createReadStream, existsSync, statSync } from 'fs';
+import UploadProgressEvent from './model/UploadProgressEvent';
+import { QueryOptions } from './HttpClient';
+import FormData from 'form-data';
+import path from 'path';
+import crypto from 'crypto';
 
 const PRODUCTION_BASE_URI = 'https://api.w3stream.xyz/api';
 const DEFAULT_CHUNK_SIZE = 50 * 1024 * 1024;
@@ -148,6 +154,100 @@ class W3StreamClient {
         );
       }
     }
+  }
+
+  public async uploadVideo(
+    id: string,
+    file: string,
+    progressListener?: (event: UploadProgressEvent) => void
+  ): Promise<void> {
+    if (!id || typeof id !== 'string') {
+      throw new Error('Invalid id parameter');
+    }
+    if (!existsSync(file)) {
+      throw new Error(`${file} must be a readable source file`);
+    }
+
+    const fileStats = statSync(file);
+    const length = fileStats.size;
+    if (length <= 0) {
+      throw new Error(`${file} is empty`);
+    }
+
+    const localVarPath = `videos/${encodeURIComponent(id)}/part`;
+    const chunkSize = this.httpClient.getChunkSize();
+    const filename = path.basename(file);
+
+    const uploadChunk = async (
+      start: number,
+      end: number,
+      chunkNumber: number,
+      totalChunks: number
+    ): Promise<void> => {
+      const chunkFormData = new FormData();
+      const fileStream = createReadStream(file, { start, end });
+
+      const hash = crypto.createHash('md5');
+      for await (const chunk of fileStream) {
+        hash.update(chunk);
+      }
+      const md5Hash = hash.digest('hex');
+
+      fileStream.destroy();
+      const uploadStream = createReadStream(file, { start, end });
+
+      chunkFormData.append('file', uploadStream, filename);
+      chunkFormData.append('index', (chunkNumber + 1).toString());
+      chunkFormData.append('hash', md5Hash);
+
+      const queryParams: QueryOptions = {
+        method: 'POST',
+        body: chunkFormData,
+        headers: {
+          'Content-Range': `bytes ${start}-${end}/${length}`,
+        },
+      };
+
+      if (progressListener) {
+        queryParams.onUploadProgress = (progress) => {
+          progressListener({
+            chunksCount: totalChunks,
+            currentChunk: chunkNumber,
+            currentChunkUploadedBytes: progress.loaded,
+            currentChunkTotalBytes: progress.total || 0,
+            uploadedBytes: Math.min(
+              length,
+              chunkNumber * chunkSize + progress.loaded
+            ),
+            totalBytes: length,
+          });
+        };
+      }
+
+      await this.httpClient.call(localVarPath, queryParams);
+    };
+
+    if (chunkSize > length) {
+      await uploadChunk(0, length - 1, 0, 1);
+    } else {
+      const chunksCount = Math.ceil(length / chunkSize);
+      const uploadPromises: Promise<void>[] = [];
+      for (let chunkNumber = 0; chunkNumber < chunksCount; chunkNumber++) {
+        const start = chunkNumber * chunkSize;
+        const end = Math.min(start + chunkSize - 1, length - 1);
+        uploadPromises.push(uploadChunk(start, end, chunkNumber, chunksCount));
+
+        if (uploadPromises.length >= 5 || chunkNumber === chunksCount - 1) {
+          await Promise.all(uploadPromises);
+          uploadPromises.length = 0;
+        }
+      }
+    }
+
+    const uploadCompleteLocalVarPath = `videos/${encodeURIComponent(
+      id
+    )}/complete`;
+    await this.httpClient.call(uploadCompleteLocalVarPath, { method: 'GET' });
   }
 }
 
