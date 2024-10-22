@@ -17,9 +17,13 @@ import Controls from './model/Controls';
 import CreateApiKeyData from './model/CreateApiKeyData';
 import CreateApiKeyRequest from './model/CreateApiKeyRequest';
 import CreateApiKeyResponse from './model/CreateApiKeyResponse';
+import CreateLiveStreamKeyRequest from './model/CreateLiveStreamKeyRequest';
+import CreateLiveStreamKeyResponse from './model/CreateLiveStreamKeyResponse';
 import CreatePlayerThemeRequest from './model/CreatePlayerThemeRequest';
 import CreatePlayerThemesData from './model/CreatePlayerThemesData';
 import CreatePlayerThemesResponse from './model/CreatePlayerThemesResponse';
+import CreateStreamingRequest from './model/CreateStreamingRequest';
+import CreateStreamingResponse from './model/CreateStreamingResponse';
 import CreateVideoCaptionData from './model/CreateVideoCaptionData';
 import CreateVideoCaptionResponse from './model/CreateVideoCaptionResponse';
 import CreateVideoChapterData from './model/CreateVideoChapterData';
@@ -35,10 +39,20 @@ import GetAllWatermarkData from './model/GetAllWatermarkData';
 import GetAllWatermarkResponse from './model/GetAllWatermarkResponse';
 import GetApiKeysData from './model/GetApiKeysData';
 import GetApiKeysResponse from './model/GetApiKeysResponse';
+import GetLiveStreamKeyData from './model/GetLiveStreamKeyData';
+import GetLiveStreamKeyResponse from './model/GetLiveStreamKeyResponse';
+import GetLiveStreamKeysListData from './model/GetLiveStreamKeysListData';
+import GetLiveStreamKeysListResponse from './model/GetLiveStreamKeysListResponse';
+import GetLiveStreamVideoPublicResponse from './model/GetLiveStreamVideoPublicResponse';
+import GetLiveStreamVideoResponse from './model/GetLiveStreamVideoResponse';
+import GetLiveStreamVideosRequest from './model/GetLiveStreamVideosRequest';
+import GetLiveStreamVideosResponse from './model/GetLiveStreamVideosResponse';
 import GetPlayerThemeByIdData from './model/GetPlayerThemeByIdData';
 import GetPlayerThemeByIdResponse from './model/GetPlayerThemeByIdResponse';
 import GetPlayerThemeData from './model/GetPlayerThemeData';
 import GetPlayerThemeResponse from './model/GetPlayerThemeResponse';
+import GetStreamingResponse from './model/GetStreamingResponse';
+import GetStreamingsResponse from './model/GetStreamingsResponse';
 import GetTranscodeCostData from './model/GetTranscodeCostData';
 import GetTranscodeCostResponse from './model/GetTranscodeCostResponse';
 import GetUserWebhookData from './model/GetUserWebhookData';
@@ -53,6 +67,11 @@ import GetVideoListRequest from './model/GetVideoListRequest';
 import GetVideoListResponse from './model/GetVideoListResponse';
 import GetWebhooksListData from './model/GetWebhooksListData';
 import GetWebhooksListResponse from './model/GetWebhooksListResponse';
+import LiveStreamAssets from './model/LiveStreamAssets';
+import LiveStreamKeyData from './model/LiveStreamKeyData';
+import LiveStreamVideoData from './model/LiveStreamVideoData';
+import LiveStreamVideoResponse from './model/LiveStreamVideoResponse';
+import LiveStreamVideosResponse from './model/LiveStreamVideosResponse';
 import Metadata from './model/Metadata';
 import PlayerTheme from './model/PlayerTheme';
 import QualityObject from './model/QualityObject';
@@ -62,15 +81,19 @@ import ResponseError from './model/ResponseError';
 import ResponseSuccess from './model/ResponseSuccess';
 import SetDefaultCaptionRequest from './model/SetDefaultCaptionRequest';
 import Theme from './model/Theme';
+import UpdateLiveStreamKeyData from './model/UpdateLiveStreamKeyData';
+import UpdateLiveStreamKeyRequest from './model/UpdateLiveStreamKeyRequest';
+import UpdateLiveStreamKeyResponse from './model/UpdateLiveStreamKeyResponse';
+import UpdateLiveStreamVideoRequest from './model/UpdateLiveStreamVideoRequest';
 import UpdatePlayerThemeRequest from './model/UpdatePlayerThemeRequest';
 import UpdatePlayerThemeResponse from './model/UpdatePlayerThemeResponse';
 import UpdateVideoInfoRequest from './model/UpdateVideoInfoRequest';
 import UpdateWebhookRequest from './model/UpdateWebhookRequest';
 import UploadLogoByIdResponse from './model/UploadLogoByIdResponse';
-import Video from './model/Video';
 import VideoAssets from './model/VideoAssets';
 import VideoCaption from './model/VideoCaption';
 import VideoChapter from './model/VideoChapter';
+import VideoObject from './model/VideoObject';
 import VideoWatermark from './model/VideoWatermark';
 import Watermark from './model/Watermark';
 import Webhook from './model/Webhook';
@@ -102,9 +125,13 @@ const typeMap: { [index: string]: any } = {
   CreateApiKeyData: CreateApiKeyData,
   CreateApiKeyRequest: CreateApiKeyRequest,
   CreateApiKeyResponse: CreateApiKeyResponse,
+  CreateLiveStreamKeyRequest: CreateLiveStreamKeyRequest,
+  CreateLiveStreamKeyResponse: CreateLiveStreamKeyResponse,
   CreatePlayerThemeRequest: CreatePlayerThemeRequest,
   CreatePlayerThemesData: CreatePlayerThemesData,
   CreatePlayerThemesResponse: CreatePlayerThemesResponse,
+  CreateStreamingRequest: CreateStreamingRequest,
+  CreateStreamingResponse: CreateStreamingResponse,
   CreateVideoCaptionData: CreateVideoCaptionData,
   CreateVideoCaptionResponse: CreateVideoCaptionResponse,
   CreateVideoChapterData: CreateVideoChapterData,
@@ -120,10 +147,20 @@ const typeMap: { [index: string]: any } = {
   GetAllWatermarkResponse: GetAllWatermarkResponse,
   GetApiKeysData: GetApiKeysData,
   GetApiKeysResponse: GetApiKeysResponse,
+  GetLiveStreamKeyData: GetLiveStreamKeyData,
+  GetLiveStreamKeyResponse: GetLiveStreamKeyResponse,
+  GetLiveStreamKeysListData: GetLiveStreamKeysListData,
+  GetLiveStreamKeysListResponse: GetLiveStreamKeysListResponse,
+  GetLiveStreamVideoPublicResponse: GetLiveStreamVideoPublicResponse,
+  GetLiveStreamVideoResponse: GetLiveStreamVideoResponse,
+  GetLiveStreamVideosRequest: GetLiveStreamVideosRequest,
+  GetLiveStreamVideosResponse: GetLiveStreamVideosResponse,
   GetPlayerThemeByIdData: GetPlayerThemeByIdData,
   GetPlayerThemeByIdResponse: GetPlayerThemeByIdResponse,
   GetPlayerThemeData: GetPlayerThemeData,
   GetPlayerThemeResponse: GetPlayerThemeResponse,
+  GetStreamingResponse: GetStreamingResponse,
+  GetStreamingsResponse: GetStreamingsResponse,
   GetTranscodeCostData: GetTranscodeCostData,
   GetTranscodeCostResponse: GetTranscodeCostResponse,
   GetUserWebhookData: GetUserWebhookData,
@@ -138,6 +175,11 @@ const typeMap: { [index: string]: any } = {
   GetVideoListResponse: GetVideoListResponse,
   GetWebhooksListData: GetWebhooksListData,
   GetWebhooksListResponse: GetWebhooksListResponse,
+  LiveStreamAssets: LiveStreamAssets,
+  LiveStreamKeyData: LiveStreamKeyData,
+  LiveStreamVideoData: LiveStreamVideoData,
+  LiveStreamVideoResponse: LiveStreamVideoResponse,
+  LiveStreamVideosResponse: LiveStreamVideosResponse,
   Metadata: Metadata,
   PlayerTheme: PlayerTheme,
   QualityObject: QualityObject,
@@ -147,15 +189,19 @@ const typeMap: { [index: string]: any } = {
   ResponseSuccess: ResponseSuccess,
   SetDefaultCaptionRequest: SetDefaultCaptionRequest,
   Theme: Theme,
+  UpdateLiveStreamKeyData: UpdateLiveStreamKeyData,
+  UpdateLiveStreamKeyRequest: UpdateLiveStreamKeyRequest,
+  UpdateLiveStreamKeyResponse: UpdateLiveStreamKeyResponse,
+  UpdateLiveStreamVideoRequest: UpdateLiveStreamVideoRequest,
   UpdatePlayerThemeRequest: UpdatePlayerThemeRequest,
   UpdatePlayerThemeResponse: UpdatePlayerThemeResponse,
   UpdateVideoInfoRequest: UpdateVideoInfoRequest,
   UpdateWebhookRequest: UpdateWebhookRequest,
   UploadLogoByIdResponse: UploadLogoByIdResponse,
-  Video: Video,
   VideoAssets: VideoAssets,
   VideoCaption: VideoCaption,
   VideoChapter: VideoChapter,
+  VideoObject: VideoObject,
   VideoWatermark: VideoWatermark,
   Watermark: Watermark,
   Webhook: Webhook,

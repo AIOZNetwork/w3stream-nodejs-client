@@ -9,6 +9,7 @@
  * Do not edit the class manually.
  */
 import ApiKeyApi from './api/ApiKeyApi';
+import LiveStreamApi from './api/LiveStreamApi';
 import PlayersApi from './api/PlayersApi';
 import VideoApi from './api/VideoApi';
 import VideoChapterApi from './api/VideoChapterApi';
@@ -18,6 +19,7 @@ import UploadProgressEvent from './model/UploadProgressEvent';
 declare class W3StreamClient {
     private httpClient;
     private _apiKey;
+    private _liveStream;
     private _players;
     private _video;
     private _videoChapter;
@@ -39,6 +41,11 @@ declare class W3StreamClient {
      * @return ApiKeyApi
      */
     get apiKey(): ApiKeyApi;
+    /**
+     * Get an LiveStreamApi instance
+     * @return LiveStreamApi
+     */
+    get liveStream(): LiveStreamApi;
     /**
      * Get an PlayersApi instance
      * @return PlayersApi
