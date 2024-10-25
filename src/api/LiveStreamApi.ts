@@ -422,6 +422,57 @@ export default class LiveStreamApi {
   }
 
   /**
+   * Get live stream video public for a specific live stream key
+   * Get live stream video public
+   * @param id Live stream key ID
+   */
+  public async getLiveStreamPlayerInfo(
+    id: string
+  ): Promise<GetLiveStreamVideoPublicResponse> {
+    return this.getLiveStreamPlayerInfoWithResponseHeaders(id).then(
+      (res) => res.body
+    );
+  }
+
+  /**
+   * Get live stream video public for a specific live stream key
+   * Get live stream video public
+   * @param id Live stream key ID
+   */
+  public async getLiveStreamPlayerInfoWithResponseHeaders(id: string): Promise<{
+    headers: ApiResponseHeaders;
+    body: GetLiveStreamVideoPublicResponse;
+  }> {
+    const queryParams: QueryOptions = {};
+    queryParams.headers = {};
+    if (id === null || id === undefined) {
+      throw new Error(
+        'Required parameter id was null or undefined when calling getLiveStreamPlayerInfo.'
+      );
+    }
+    // Path Params
+    const localVarPath = '/live_streams/player/{id}/videos'
+      .substring(1)
+      .replace('{' + 'id' + '}', encodeURIComponent(String(id)));
+
+    queryParams.method = 'GET';
+
+    return this.httpClient.call(localVarPath, queryParams).then((response) => {
+      return {
+        headers: response.headers,
+        body: ObjectSerializer.deserialize(
+          ObjectSerializer.parse(
+            response.body,
+            response.headers['content-type']
+          ),
+          'GetLiveStreamVideoPublicResponse',
+          ''
+        ) as GetLiveStreamVideoPublicResponse,
+      };
+    });
+  }
+
+  /**
    * Get a specific live stream video by ID
    * Get live stream video
    * @param id Live stream video ID
@@ -468,59 +519,6 @@ export default class LiveStreamApi {
           'GetLiveStreamVideoResponse',
           ''
         ) as GetLiveStreamVideoResponse,
-      };
-    });
-  }
-
-  /**
-   * Get live stream video public for a specific live stream key
-   * Get live stream video public
-   * @param id Live stream key ID
-   */
-  public async getLiveStreamVideoPublic(
-    id: string
-  ): Promise<GetLiveStreamVideoPublicResponse> {
-    return this.getLiveStreamVideoPublicWithResponseHeaders(id).then(
-      (res) => res.body
-    );
-  }
-
-  /**
-   * Get live stream video public for a specific live stream key
-   * Get live stream video public
-   * @param id Live stream key ID
-   */
-  public async getLiveStreamVideoPublicWithResponseHeaders(
-    id: string
-  ): Promise<{
-    headers: ApiResponseHeaders;
-    body: GetLiveStreamVideoPublicResponse;
-  }> {
-    const queryParams: QueryOptions = {};
-    queryParams.headers = {};
-    if (id === null || id === undefined) {
-      throw new Error(
-        'Required parameter id was null or undefined when calling getLiveStreamVideoPublic.'
-      );
-    }
-    // Path Params
-    const localVarPath = '/live_streams/player/{id}/videos'
-      .substring(1)
-      .replace('{' + 'id' + '}', encodeURIComponent(String(id)));
-
-    queryParams.method = 'GET';
-
-    return this.httpClient.call(localVarPath, queryParams).then((response) => {
-      return {
-        headers: response.headers,
-        body: ObjectSerializer.deserialize(
-          ObjectSerializer.parse(
-            response.body,
-            response.headers['content-type']
-          ),
-          'GetLiveStreamVideoPublicResponse',
-          ''
-        ) as GetLiveStreamVideoPublicResponse,
       };
     });
   }

@@ -10,8 +10,8 @@ All URIs are relative to *http://localhost/api*
 | [**deleteLiveStreamVideo()**](LiveStreamApi.md#deleteLiveStreamVideo) | Delete live stream video | **DELETE** /live_streams/{id}/videos |
 | [**getLiveStreamKey()**](LiveStreamApi.md#getLiveStreamKey) | Get live stream key | **GET** /live_streams/{id} |
 | [**getLiveStreamKeys()**](LiveStreamApi.md#getLiveStreamKeys) | Get live stream key list | **GET** /live_streams |
+| [**getLiveStreamPlayerInfo()**](LiveStreamApi.md#getLiveStreamPlayerInfo) | Get live stream video public | **GET** /live_streams/player/{id}/videos |
 | [**getLiveStreamVideo()**](LiveStreamApi.md#getLiveStreamVideo) | Get live stream video | **GET** /live_streams/{id}/videos |
-| [**getLiveStreamVideoPublic()**](LiveStreamApi.md#getLiveStreamVideoPublic) | Get live stream video public | **GET** /live_streams/player/{id}/videos |
 | [**getLiveStreamVideos()**](LiveStreamApi.md#getLiveStreamVideos) | Get live stream videos | **POST** /live_streams/{id}/videos |
 | [**getStreaming()**](LiveStreamApi.md#getStreaming) | Get live stream video streaming | **GET** /live_streams/{id}/streamings/{stream_id} |
 | [**getStreamings()**](LiveStreamApi.md#getStreamings) | Get live stream video streamings | **GET** /live_streams/{id}/streamings |
@@ -156,6 +156,28 @@ Promise<[**GetLiveStreamKeysListResponse**](../model/GetLiveStreamKeysListRespon
 
 ---
 
+<a name="getLiveStreamPlayerInfo"></a>
+## **`getLiveStreamPlayerInfo()` - Get live stream video public**
+
+
+Get live stream video public for a specific live stream key
+
+### Parameters
+
+| Name | Type | Required | Description |
+| ------------- | ------------- | ------------- | ------------- |
+ | **id** | **string**| **yes**| Live stream key ID |
+
+
+### Return type
+
+Promise<[**GetLiveStreamVideoPublicResponse**](../model/GetLiveStreamVideoPublicResponse.md)>.
+
+
+
+
+---
+
 <a name="getLiveStreamVideo"></a>
 ## **`getLiveStreamVideo()` - Get live stream video**
 
@@ -172,28 +194,6 @@ Get a specific live stream video by ID
 ### Return type
 
 Promise<[**GetLiveStreamVideoResponse**](../model/GetLiveStreamVideoResponse.md)>.
-
-
-
-
----
-
-<a name="getLiveStreamVideoPublic"></a>
-## **`getLiveStreamVideoPublic()` - Get live stream video public**
-
-
-Get live stream video public for a specific live stream key
-
-### Parameters
-
-| Name | Type | Required | Description |
-| ------------- | ------------- | ------------- | ------------- |
- | **id** | **string**| **yes**| Live stream key ID |
-
-
-### Return type
-
-Promise<[**GetLiveStreamVideoPublicResponse**](../model/GetLiveStreamVideoPublicResponse.md)>.
 
 
 

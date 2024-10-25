@@ -44,7 +44,7 @@ import W3StreamClient from "@w3stream/nodejs-client";
       title: "First video", // The title of your new video.
       description: "A new video.", // A brief description of your video.
     };
-
+ 
     const video = await client.video.create(videoCreationPayload);
     if (!video.data) {
       throw new Error("Failed to create video");
@@ -61,7 +61,7 @@ import W3StreamClient from "@w3stream/nodejs-client";
       "./path/to/video.mp4",
     );
     console.log(uploadResult);
-
+ 
     const checkResult = await client.video.uploadVideoComplete(video.data.id);
     // Check if the video upload is complete
     console.log(checkResult);
@@ -79,7 +79,7 @@ import W3StreamClient from "@w3stream/nodejs-client";
 ### API endpoints
 
 
-#### Api key
+#### API key
 
 Method | Description | HTTP request
 ------------- | ------------- | -------------
@@ -87,6 +87,25 @@ Method | Description | HTTP request
 [**update()**](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/api/ApiKeyApi.md#update) | Rename API key | **PATCH** `/api_keys/{id}`
 [**delete()**](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/api/ApiKeyApi.md#delete) | Delete API key | **DELETE** `/api_keys/{id}`
 [**list()**](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/api/ApiKeyApi.md#list) | Get list API keys | **GET** `/api_keys`
+
+
+#### Live stream 
+
+Method | Description | HTTP request
+------------- | ------------- | -------------
+[**createLiveStreamKey()**](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/api/LiveStreamApi.md#createLiveStreamKey) | Create live stream key | **POST** `/live_streams`
+[**createStreaming()**](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/api/LiveStreamApi.md#createStreaming) | Create a new live stream video | **POST** `/live_streams/{id}/streamings`
+[**deleteLiveStreamKey()**](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/api/LiveStreamApi.md#deleteLiveStreamKey) | Delete live stream key | **DELETE** `/live_streams/{id}`
+[**deleteLiveStreamVideo()**](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/api/LiveStreamApi.md#deleteLiveStreamVideo) | Delete live stream video | **DELETE** `/live_streams/{id}/videos`
+[**getLiveStreamKey()**](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/api/LiveStreamApi.md#getLiveStreamKey) | Get live stream key | **GET** `/live_streams/{id}`
+[**getLiveStreamKeys()**](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/api/LiveStreamApi.md#getLiveStreamKeys) | Get live stream key list | **GET** `/live_streams`
+[**getLiveStreamPlayerInfo()**](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/api/LiveStreamApi.md#getLiveStreamPlayerInfo) | Get live stream video public | **GET** `/live_streams/player/{id}/videos`
+[**getLiveStreamVideo()**](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/api/LiveStreamApi.md#getLiveStreamVideo) | Get live stream video | **GET** `/live_streams/{id}/videos`
+[**getLiveStreamVideos()**](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/api/LiveStreamApi.md#getLiveStreamVideos) | Get live stream videos | **POST** `/live_streams/{id}/videos`
+[**getStreaming()**](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/api/LiveStreamApi.md#getStreaming) | Get live stream video streaming | **GET** `/live_streams/{id}/streamings/{stream_id}`
+[**getStreamings()**](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/api/LiveStreamApi.md#getStreamings) | Get live stream video streamings | **GET** `/live_streams/{id}/streamings`
+[**updateLiveStreamKey()**](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/api/LiveStreamApi.md#updateLiveStreamKey) | Update live stream key | **PUT** `/live_streams/{id}`
+[**updateLiveStreamVideo()**](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/api/LiveStreamApi.md#updateLiveStreamVideo) | Update live stream video | **PUT** `/live_streams/{id}/streamings`
 
 
 #### Players
@@ -104,7 +123,7 @@ Method | Description | HTTP request
 [**removePlayer()**](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/api/PlayersApi.md#removePlayer) | Remove a player theme from a video | **POST** `/players/remove-player`
 
 
-#### VideoApi
+#### Video
 
 Method | Description | HTTP request
 ------------- | ------------- | -------------
@@ -118,6 +137,7 @@ Method | Description | HTTP request
 [**getCost()**](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/api/VideoApi.md#getCost) | get video transcoding cost | **GET** `/videos/cost`
 [**getDetail()**](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/api/VideoApi.md#getDetail) | get video detail | **GET** `/videos/{id}`
 [**getVideoList()**](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/api/VideoApi.md#getVideoList) | Get user videos list | **POST** `/videos`
+[**getVideoPlayerInfo()**](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/api/VideoApi.md#getVideoPlayerInfo) | Get video player info | **GET** `/videos/{id}/player.json`
 [**setCaption()**](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/api/VideoApi.md#setCaption) | Set default video caption | **PATCH** `/videos/{id}/captions/{lan}`
 [**uploadPart()**](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/api/VideoApi.md#uploadPart) | Upload part of video | **POST** `/videos/{id}/part`
 [**uploadVideoComplete()**](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/api/VideoApi.md#uploadVideoComplete) | Get upload video when complete | **GET** `/videos/{id}/complete`
@@ -211,6 +231,7 @@ Method | Description | HTTP request
  - [GetVideoListData](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/model/GetVideoListData.md)
  - [GetVideoListRequest](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/model/GetVideoListRequest.md)
  - [GetVideoListResponse](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/model/GetVideoListResponse.md)
+ - [GetVideoPlayerInfoResponse](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/model/GetVideoPlayerInfoResponse.md)
  - [GetWebhooksListData](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/model/GetWebhooksListData.md)
  - [GetWebhooksListResponse](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/model/GetWebhooksListResponse.md)
  - [LiveStreamAssets](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/model/LiveStreamAssets.md)
@@ -236,10 +257,10 @@ Method | Description | HTTP request
  - [UpdateVideoInfoRequest](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/model/UpdateVideoInfoRequest.md)
  - [UpdateWebhookRequest](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/model/UpdateWebhookRequest.md)
  - [UploadLogoByIdResponse](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/model/UploadLogoByIdResponse.md)
+ - [Video](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/model/Video.md)
  - [VideoAssets](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/model/VideoAssets.md)
  - [VideoCaption](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/model/VideoCaption.md)
  - [VideoChapter](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/model/VideoChapter.md)
- - [VideoObject](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/model/VideoObject.md)
  - [VideoWatermark](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/model/VideoWatermark.md)
  - [Watermark](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/model/Watermark.md)
  - [Webhook](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/model/Webhook.md)

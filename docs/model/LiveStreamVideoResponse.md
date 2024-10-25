@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **title** | **string** |  |  [optional]
 **updatedAt** | **string** |  |  [optional]
 **userId** | **string** |  |  [optional]
-**video** | [**VideoObject**](VideoObject.md) |  |  [optional]
+**video** | [**Video**](Video.md) |  |  [optional]
 
 
 

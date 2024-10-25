@@ -11,7 +11,7 @@
 
 import AttributeType from './AttributeType.js';
 import LiveStreamAssets from './LiveStreamAssets.js';
-import VideoObject from './VideoObject.js';
+import Video from './Video.js';
 
 export default class LiveStreamVideoData {
   'assets'?: LiveStreamAssets;
@@ -25,7 +25,7 @@ export default class LiveStreamVideoData {
   'title'?: string;
   'updatedAt'?: string;
   'userId'?: string;
-  'video'?: VideoObject;
+  'video'?: Video;
 
   static readonly discriminator?: string = undefined;
 
@@ -99,7 +99,7 @@ export default class LiveStreamVideoData {
     {
       name: 'video',
       baseName: 'video',
-      type: 'VideoObject',
+      type: 'Video',
       format: '',
     },
   ];

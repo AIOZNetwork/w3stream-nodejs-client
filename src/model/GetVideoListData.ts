@@ -10,11 +10,11 @@
  */
 
 import AttributeType from './AttributeType.js';
-import VideoObject from './VideoObject.js';
+import Video from './Video.js';
 
 export default class GetVideoListData {
   'total'?: number;
-  'videos'?: Array<VideoObject>;
+  'videos'?: Array<Video>;
 
   static readonly discriminator?: string = undefined;
 
@@ -28,7 +28,7 @@ export default class GetVideoListData {
     {
       name: 'videos',
       baseName: 'videos',
-      type: 'Array<VideoObject>',
+      type: 'Array<Video>',
       format: '',
     },
   ];

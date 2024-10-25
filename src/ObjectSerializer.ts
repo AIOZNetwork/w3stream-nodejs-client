@@ -65,6 +65,7 @@ import GetVideoDetailResponse from './model/GetVideoDetailResponse';
 import GetVideoListData from './model/GetVideoListData';
 import GetVideoListRequest from './model/GetVideoListRequest';
 import GetVideoListResponse from './model/GetVideoListResponse';
+import GetVideoPlayerInfoResponse from './model/GetVideoPlayerInfoResponse';
 import GetWebhooksListData from './model/GetWebhooksListData';
 import GetWebhooksListResponse from './model/GetWebhooksListResponse';
 import LiveStreamAssets from './model/LiveStreamAssets';
@@ -90,10 +91,10 @@ import UpdatePlayerThemeResponse from './model/UpdatePlayerThemeResponse';
 import UpdateVideoInfoRequest from './model/UpdateVideoInfoRequest';
 import UpdateWebhookRequest from './model/UpdateWebhookRequest';
 import UploadLogoByIdResponse from './model/UploadLogoByIdResponse';
+import Video from './model/Video';
 import VideoAssets from './model/VideoAssets';
 import VideoCaption from './model/VideoCaption';
 import VideoChapter from './model/VideoChapter';
-import VideoObject from './model/VideoObject';
 import VideoWatermark from './model/VideoWatermark';
 import Watermark from './model/Watermark';
 import Webhook from './model/Webhook';
@@ -173,6 +174,7 @@ const typeMap: { [index: string]: any } = {
   GetVideoListData: GetVideoListData,
   GetVideoListRequest: GetVideoListRequest,
   GetVideoListResponse: GetVideoListResponse,
+  GetVideoPlayerInfoResponse: GetVideoPlayerInfoResponse,
   GetWebhooksListData: GetWebhooksListData,
   GetWebhooksListResponse: GetWebhooksListResponse,
   LiveStreamAssets: LiveStreamAssets,
@@ -198,10 +200,10 @@ const typeMap: { [index: string]: any } = {
   UpdateVideoInfoRequest: UpdateVideoInfoRequest,
   UpdateWebhookRequest: UpdateWebhookRequest,
   UploadLogoByIdResponse: UploadLogoByIdResponse,
+  Video: Video,
   VideoAssets: VideoAssets,
   VideoCaption: VideoCaption,
   VideoChapter: VideoChapter,
-  VideoObject: VideoObject,
   VideoWatermark: VideoWatermark,
   Watermark: Watermark,
   Webhook: Webhook,

@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**VideoObject**](VideoObject.md) |  |  [optional]
+**data** | [**Video**](Video.md) |  |  [optional]
 **status** | **string** |  |  [optional]
 
 

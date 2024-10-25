@@ -10,10 +10,10 @@
  */
 
 import AttributeType from './AttributeType.js';
-import VideoObject from './VideoObject.js';
+import Video from './Video.js';
 
 export default class CreateVideoResponse {
-  'data'?: VideoObject;
+  'data'?: Video;
   'status'?: string;
 
   static readonly discriminator?: string = undefined;
@@ -22,7 +22,7 @@ export default class CreateVideoResponse {
     {
       name: 'data',
       baseName: 'data',
-      type: 'VideoObject',
+      type: 'Video',
       format: '',
     },
     {

@@ -14,6 +14,7 @@ All URIs are relative to *http://localhost/api*
 | [**getCost()**](VideoApi.md#getCost) | get video transcoding cost | **GET** /videos/cost |
 | [**getDetail()**](VideoApi.md#getDetail) | get video detail | **GET** /videos/{id} |
 | [**getVideoList()**](VideoApi.md#getVideoList) | Get user videos list | **POST** /videos |
+| [**getVideoPlayerInfo()**](VideoApi.md#getVideoPlayerInfo) | Get video player info | **GET** /videos/{id}/player.json |
 | [**setCaption()**](VideoApi.md#setCaption) | Set default video caption | **PATCH** /videos/{id}/captions/{lan} |
 | [**uploadPart()**](VideoApi.md#uploadPart) | Upload part of video | **POST** /videos/{id}/part |
 | [**uploadVideoComplete()**](VideoApi.md#uploadVideoComplete) | Get upload video when complete | **GET** /videos/{id}/complete |
@@ -237,6 +238,29 @@ Retrieve a list of videos for the authenticated user.
 ### Return type
 
 Promise<[**GetVideoListResponse**](../model/GetVideoListResponse.md)>.
+
+
+
+
+---
+
+<a name="getVideoPlayerInfo"></a>
+## **`getVideoPlayerInfo()` - Get video player info**
+
+
+Get video player info
+
+### Parameters
+
+| Name | Type | Required | Description |
+| ------------- | ------------- | ------------- | ------------- |
+ | **id** | **string**| **yes**| Video ID |
+ | **token** | **string**| no| Token |
+
+
+### Return type
+
+Promise<[**GetVideoPlayerInfoResponse**](../model/GetVideoPlayerInfoResponse.md)>.
 
 
 

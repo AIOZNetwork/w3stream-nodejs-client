@@ -24,6 +24,7 @@ import GetVideoCaptionsResponse from '../model/GetVideoCaptionsResponse';
 import GetVideoDetailResponse from '../model/GetVideoDetailResponse';
 import GetVideoListRequest from '../model/GetVideoListRequest';
 import GetVideoListResponse from '../model/GetVideoListResponse';
+import GetVideoPlayerInfoResponse from '../model/GetVideoPlayerInfoResponse';
 import ResponseSuccess from '../model/ResponseSuccess';
 import SetDefaultCaptionRequest from '../model/SetDefaultCaptionRequest';
 import UpdateVideoInfoRequest from '../model/UpdateVideoInfoRequest';
@@ -678,6 +679,80 @@ export default class VideoApi {
           'GetVideoListResponse',
           ''
         ) as GetVideoListResponse,
+      };
+    });
+  }
+
+  /**
+   * Get video player info
+   * Get video player info
+   * @param {Object} searchParams
+   * @param { string } searchParams.id Video ID
+   * @param { string } searchParams.token Token
+   */
+  public async getVideoPlayerInfo(args: {
+    id: string;
+    token?: string;
+  }): Promise<GetVideoPlayerInfoResponse> {
+    return this.getVideoPlayerInfoWithResponseHeaders(args).then(
+      (res) => res.body
+    );
+  }
+
+  /**
+   * Get video player info
+   * Get video player info
+   * @param {Object} searchParams
+   * @param { string } searchParams.id Video ID
+   * @param { string } searchParams.token Token
+   */
+  public async getVideoPlayerInfoWithResponseHeaders({
+    id,
+    token,
+  }: {
+    id: string;
+    token?: string;
+  }): Promise<{
+    headers: ApiResponseHeaders;
+    body: GetVideoPlayerInfoResponse;
+  }> {
+    const queryParams: QueryOptions = {};
+    queryParams.headers = {};
+    if (id === null || id === undefined) {
+      throw new Error(
+        'Required parameter id was null or undefined when calling getVideoPlayerInfo.'
+      );
+    }
+    // Path Params
+    const localVarPath = '/videos/{id}/player.json'
+      .substring(1)
+      .replace('{' + 'id' + '}', encodeURIComponent(String(id)));
+
+    // Query Params
+    const urlSearchParams = new URLSearchParams();
+
+    if (token !== undefined) {
+      urlSearchParams.append(
+        'token',
+        ObjectSerializer.serialize(token, 'string', '')
+      );
+    }
+
+    queryParams.searchParams = urlSearchParams;
+
+    queryParams.method = 'GET';
+
+    return this.httpClient.call(localVarPath, queryParams).then((response) => {
+      return {
+        headers: response.headers,
+        body: ObjectSerializer.deserialize(
+          ObjectSerializer.parse(
+            response.body,
+            response.headers['content-type']
+          ),
+          'GetVideoPlayerInfoResponse',
+          ''
+        ) as GetVideoPlayerInfoResponse,
       };
     });
   }
