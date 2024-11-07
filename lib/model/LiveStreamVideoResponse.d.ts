@@ -10,7 +10,7 @@
  */
 import AttributeType from './AttributeType.js';
 import LiveStreamAssets from './LiveStreamAssets.js';
-import VideoObject from './VideoObject.js';
+import Video from './Video.js';
 export default class LiveStreamVideoResponse {
     'assets'?: LiveStreamAssets;
     'createdAt'?: string;
@@ -23,7 +23,7 @@ export default class LiveStreamVideoResponse {
     'title'?: string;
     'updatedAt'?: string;
     'userId'?: string;
-    'video'?: VideoObject;
+    'video'?: Video;
     static readonly discriminator?: string;
     static readonly attributeTypeMap: Array<AttributeType>;
     static getAttributeTypeMap(): Array<AttributeType>;

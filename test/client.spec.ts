@@ -2,6 +2,7 @@ import W3StreamClient from '../src';
 import ApiKeyApi from '../src/api/ApiKeyApi';
 import LiveStreamApi from '../src/api/LiveStreamApi';
 import PlayersApi from '../src/api/PlayersApi';
+import PlaylistApi from '../src/api/PlaylistApi';
 import VideoApi from '../src/api/VideoApi';
 import VideoChapterApi from '../src/api/VideoChapterApi';
 import WatermarkApi from '../src/api/WatermarkApi';
@@ -19,6 +20,10 @@ describe('W3StreamClient', () => {
   it('should use the PlayersApi class', () => {
     const client = new W3StreamClient({ apiKey: 'test' });
     expect(client.players).toBeInstanceOf(PlayersApi);
+  });
+  it('should use the PlaylistApi class', () => {
+    const client = new W3StreamClient({ apiKey: 'test' });
+    expect(client.playlist).toBeInstanceOf(PlaylistApi);
   });
   it('should use the VideoApi class', () => {
     const client = new W3StreamClient({ apiKey: 'test' });

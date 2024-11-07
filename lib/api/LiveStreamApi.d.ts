@@ -146,6 +146,21 @@ export default class LiveStreamApi {
         body: GetLiveStreamKeysListResponse;
     }>;
     /**
+     * Get live stream video public for a specific live stream key
+     * Get live stream video public
+     * @param id Live stream key ID
+     */
+    getLiveStreamPlayerInfo(id: string): Promise<GetLiveStreamVideoPublicResponse>;
+    /**
+     * Get live stream video public for a specific live stream key
+     * Get live stream video public
+     * @param id Live stream key ID
+     */
+    getLiveStreamPlayerInfoWithResponseHeaders(id: string): Promise<{
+        headers: ApiResponseHeaders;
+        body: GetLiveStreamVideoPublicResponse;
+    }>;
+    /**
      * Get a specific live stream video by ID
      * Get live stream video
      * @param id Live stream video ID
@@ -159,21 +174,6 @@ export default class LiveStreamApi {
     getLiveStreamVideoWithResponseHeaders(id: string): Promise<{
         headers: ApiResponseHeaders;
         body: GetLiveStreamVideoResponse;
-    }>;
-    /**
-     * Get live stream video public for a specific live stream key
-     * Get live stream video public
-     * @param id Live stream key ID
-     */
-    getLiveStreamVideoPublic(id: string): Promise<GetLiveStreamVideoPublicResponse>;
-    /**
-     * Get live stream video public for a specific live stream key
-     * Get live stream video public
-     * @param id Live stream key ID
-     */
-    getLiveStreamVideoPublicWithResponseHeaders(id: string): Promise<{
-        headers: ApiResponseHeaders;
-        body: GetLiveStreamVideoPublicResponse;
     }>;
     /**
      * Get live stream videos for a specific live stream key

@@ -9,10 +9,10 @@
  * Do not edit the class manually.
  */
 import AttributeType from './AttributeType.js';
-import VideoObject from './VideoObject.js';
+import Video from './Video.js';
 export default class GetVideoListData {
     'total'?: number;
-    'videos'?: Array<VideoObject>;
+    'videos'?: Array<Video>;
     static readonly discriminator?: string;
     static readonly attributeTypeMap: Array<AttributeType>;
     static getAttributeTypeMap(): Array<AttributeType>;

@@ -18,6 +18,8 @@ export default class GetLiveStreamVideosRequest {
   'orderBy'?: string;
   'search'?: string;
   'sortBy'?: string;
+  'status'?: string;
+  'videoStatus'?: string;
 
   static readonly discriminator?: string = undefined;
 
@@ -55,6 +57,18 @@ export default class GetLiveStreamVideosRequest {
     {
       name: 'sortBy',
       baseName: 'sort_by',
+      type: 'string',
+      format: '',
+    },
+    {
+      name: 'status',
+      baseName: 'status',
+      type: 'string',
+      format: '',
+    },
+    {
+      name: 'videoStatus',
+      baseName: 'video_status',
       type: 'string',
       format: '',
     },

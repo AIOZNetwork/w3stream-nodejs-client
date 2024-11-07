@@ -9,11 +9,9 @@
  * Do not edit the class manually.
  */
 import AttributeType from './AttributeType.js';
-import Asset from './Asset.js';
 import Controls from './Controls.js';
 import Theme from './Theme.js';
 export default class UpdatePlayerThemeRequest {
-    'asset'?: Asset;
     'controls'?: Controls;
     'isDefault'?: boolean;
     'name'?: string;

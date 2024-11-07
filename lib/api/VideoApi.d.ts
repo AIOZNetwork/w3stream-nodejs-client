@@ -18,6 +18,7 @@ import GetVideoCaptionsResponse from '../model/GetVideoCaptionsResponse';
 import GetVideoDetailResponse from '../model/GetVideoDetailResponse';
 import GetVideoListRequest from '../model/GetVideoListRequest';
 import GetVideoListResponse from '../model/GetVideoListResponse';
+import GetVideoPlayerInfoResponse from '../model/GetVideoPlayerInfoResponse';
 import ResponseSuccess from '../model/ResponseSuccess';
 import SetDefaultCaptionRequest from '../model/SetDefaultCaptionRequest';
 import UpdateVideoInfoRequest from '../model/UpdateVideoInfoRequest';
@@ -200,6 +201,31 @@ export default class VideoApi {
     getVideoListWithResponseHeaders(request?: GetVideoListRequest): Promise<{
         headers: ApiResponseHeaders;
         body: GetVideoListResponse;
+    }>;
+    /**
+     * Get video player info
+     * Get video player info
+     * @param {Object} searchParams
+     * @param { string } searchParams.id Video ID
+     * @param { string } searchParams.token Token
+     */
+    getVideoPlayerInfo(args: {
+        id: string;
+        token?: string;
+    }): Promise<GetVideoPlayerInfoResponse>;
+    /**
+     * Get video player info
+     * Get video player info
+     * @param {Object} searchParams
+     * @param { string } searchParams.id Video ID
+     * @param { string } searchParams.token Token
+     */
+    getVideoPlayerInfoWithResponseHeaders({ id, token, }: {
+        id: string;
+        token?: string;
+    }): Promise<{
+        headers: ApiResponseHeaders;
+        body: GetVideoPlayerInfoResponse;
     }>;
     /**
      * Sets the default caption for the specified video and language.

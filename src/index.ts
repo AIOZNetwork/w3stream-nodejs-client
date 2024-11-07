@@ -14,6 +14,7 @@ import HttpClient from './HttpClient';
 import ApiKeyApi from './api/ApiKeyApi';
 import LiveStreamApi from './api/LiveStreamApi';
 import PlayersApi from './api/PlayersApi';
+import PlaylistApi from './api/PlaylistApi';
 import VideoApi from './api/VideoApi';
 import VideoChapterApi from './api/VideoChapterApi';
 import WatermarkApi from './api/WatermarkApi';
@@ -35,6 +36,7 @@ class W3StreamClient {
   private _apiKey: ApiKeyApi;
   private _liveStream: LiveStreamApi;
   private _players: PlayersApi;
+  private _playlist: PlaylistApi;
   private _video: VideoApi;
   private _videoChapter: VideoChapterApi;
   private _watermark: WatermarkApi;
@@ -81,6 +83,7 @@ class W3StreamClient {
     this._apiKey = new ApiKeyApi(this.httpClient);
     this._liveStream = new LiveStreamApi(this.httpClient);
     this._players = new PlayersApi(this.httpClient);
+    this._playlist = new PlaylistApi(this.httpClient);
     this._video = new VideoApi(this.httpClient);
     this._videoChapter = new VideoChapterApi(this.httpClient);
     this._watermark = new WatermarkApi(this.httpClient);
@@ -109,6 +112,14 @@ class W3StreamClient {
    */
   public get players(): PlayersApi {
     return this._players;
+  }
+
+  /**
+   * Get an PlaylistApi instance
+   * @return PlaylistApi
+   */
+  public get playlist(): PlaylistApi {
+    return this._playlist;
   }
 
   /**

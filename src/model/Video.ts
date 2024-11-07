@@ -37,6 +37,7 @@ export default class Video {
   'title'?: string;
   'updatedAt'?: string;
   'userId'?: string;
+  'view'?: number;
 
   static readonly discriminator?: string = undefined;
 
@@ -153,6 +154,12 @@ export default class Video {
       name: 'userId',
       baseName: 'user_id',
       type: 'string',
+      format: '',
+    },
+    {
+      name: 'view',
+      baseName: 'view',
+      type: 'number',
       format: '',
     },
   ];

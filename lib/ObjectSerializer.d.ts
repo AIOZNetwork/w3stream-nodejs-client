@@ -8,6 +8,12 @@
  * NOTE: This class is auto generated.
  * Do not edit the class manually.
  */
+export declare const COLLECTION_FORMATS: {
+    csv: string;
+    ssv: string;
+    tsv: string;
+    pipes: string;
+};
 export default class ObjectSerializer {
     static findCorrectType(data: any, expectedType: string): string;
     static serialize(data: any, type: string, format: string, defaultValue?: any): any;

@@ -123,6 +123,22 @@ Method | Description | HTTP request
 [**removePlayer()**](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/api/PlayersApi.md#removePlayer) | Remove a player theme from a video | **POST** `/players/remove-player`
 
 
+#### Playlist
+
+Method | Description | HTTP request
+------------- | ------------- | -------------
+[**deleteThumbnail()**](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/api/PlaylistApi.md#deleteThumbnail) | Delete a playlist thumbnail | **DELETE** `/playlists/{id}/thumbnail`
+[**addItem()**](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/api/PlaylistApi.md#addItem) | Add a video to a playlist | **POST** `/playlists/{id}/items`
+[**createPlaylist()**](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/api/PlaylistApi.md#createPlaylist) | Create a new playlist | **POST** `/playlists/create`
+[**deleteItem()**](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/api/PlaylistApi.md#deleteItem) | Remove a video from a playlist | **DELETE** `/playlists/{id}/items/{item_id}`
+[**deletePlaylist()**](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/api/PlaylistApi.md#deletePlaylist) | Delete a playlist by ID | **DELETE** `/playlists/{id}`
+[**getPlaylistById()**](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/api/PlaylistApi.md#getPlaylistById) | Get playlist by ID | **GET** `/playlists/{id}`
+[**getPlaylistInfo()**](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/api/PlaylistApi.md#getPlaylistInfo) | Get a playlist public | **GET** `/playlists/{id}/player.json`
+[**getPlaylists()**](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/api/PlaylistApi.md#getPlaylists) | Get user&#39;s playlists | **POST** `/playlists`
+[**moveItems()**](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/api/PlaylistApi.md#moveItems) | Move a video within a playlist | **PUT** `/playlists/{id}/items`
+[**updatePlaylist()**](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/api/PlaylistApi.md#updatePlaylist) | Update a playlist | **PATCH** `/playlists/{id}`
+
+
 #### Video
 
 Method | Description | HTTP request
@@ -177,6 +193,7 @@ Method | Description | HTTP request
 ### Models
 
  - [AddPlayerThemesToVideoRequest](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/model/AddPlayerThemesToVideoRequest.md)
+ - [AddVideoToPlaylistRequest](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/model/AddVideoToPlaylistRequest.md)
  - [ApiKey](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/model/ApiKey.md)
  - [Asset](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/model/Asset.md)
  - [Controls](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/model/Controls.md)
@@ -188,6 +205,9 @@ Method | Description | HTTP request
  - [CreatePlayerThemeRequest](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/model/CreatePlayerThemeRequest.md)
  - [CreatePlayerThemesData](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/model/CreatePlayerThemesData.md)
  - [CreatePlayerThemesResponse](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/model/CreatePlayerThemesResponse.md)
+ - [CreatePlaylistData](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/model/CreatePlaylistData.md)
+ - [CreatePlaylistRequest](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/model/CreatePlaylistRequest.md)
+ - [CreatePlaylistResponse](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/model/CreatePlaylistResponse.md)
  - [CreateStreamingRequest](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/model/CreateStreamingRequest.md)
  - [CreateStreamingResponse](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/model/CreateStreamingResponse.md)
  - [CreateVideoCaptionData](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/model/CreateVideoCaptionData.md)
@@ -217,6 +237,11 @@ Method | Description | HTTP request
  - [GetPlayerThemeByIdResponse](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/model/GetPlayerThemeByIdResponse.md)
  - [GetPlayerThemeData](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/model/GetPlayerThemeData.md)
  - [GetPlayerThemeResponse](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/model/GetPlayerThemeResponse.md)
+ - [GetPlaylistByIdData](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/model/GetPlaylistByIdData.md)
+ - [GetPlaylistByIdResponse](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/model/GetPlaylistByIdResponse.md)
+ - [GetPlaylistListData](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/model/GetPlaylistListData.md)
+ - [GetPlaylistListRequest](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/model/GetPlaylistListRequest.md)
+ - [GetPlaylistListResponse](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/model/GetPlaylistListResponse.md)
  - [GetStreamingResponse](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/model/GetStreamingResponse.md)
  - [GetStreamingsResponse](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/model/GetStreamingsResponse.md)
  - [GetTranscodeCostData](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/model/GetTranscodeCostData.md)
@@ -240,7 +265,12 @@ Method | Description | HTTP request
  - [LiveStreamVideoResponse](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/model/LiveStreamVideoResponse.md)
  - [LiveStreamVideosResponse](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/model/LiveStreamVideosResponse.md)
  - [Metadata](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/model/Metadata.md)
+ - [MoveVideoInPlaylistRequest](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/model/MoveVideoInPlaylistRequest.md)
  - [PlayerTheme](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/model/PlayerTheme.md)
+ - [Playlist](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/model/Playlist.md)
+ - [PlaylistItem](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/model/PlaylistItem.md)
+ - [PlaylistItemVideo](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/model/PlaylistItemVideo.md)
+ - [PublicPlaylistObject](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/model/PublicPlaylistObject.md)
  - [QualityObject](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/model/QualityObject.md)
  - [RemovePlayerThemesFromVideoRequest](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/model/RemovePlayerThemesFromVideoRequest.md)
  - [RenameAPIKeyRequest](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/model/RenameAPIKeyRequest.md)

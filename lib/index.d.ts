@@ -11,6 +11,7 @@
 import ApiKeyApi from './api/ApiKeyApi';
 import LiveStreamApi from './api/LiveStreamApi';
 import PlayersApi from './api/PlayersApi';
+import PlaylistApi from './api/PlaylistApi';
 import VideoApi from './api/VideoApi';
 import VideoChapterApi from './api/VideoChapterApi';
 import WatermarkApi from './api/WatermarkApi';
@@ -21,6 +22,7 @@ declare class W3StreamClient {
     private _apiKey;
     private _liveStream;
     private _players;
+    private _playlist;
     private _video;
     private _videoChapter;
     private _watermark;
@@ -51,6 +53,11 @@ declare class W3StreamClient {
      * @return PlayersApi
      */
     get players(): PlayersApi;
+    /**
+     * Get an PlaylistApi instance
+     * @return PlaylistApi
+     */
+    get playlist(): PlaylistApi;
     /**
      * Get an VideoApi instance
      * @return VideoApi

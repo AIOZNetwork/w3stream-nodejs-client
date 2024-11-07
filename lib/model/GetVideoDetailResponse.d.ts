@@ -9,9 +9,9 @@
  * Do not edit the class manually.
  */
 import AttributeType from './AttributeType.js';
-import VideoObject from './VideoObject.js';
+import Video from './Video.js';
 export default class GetVideoDetailResponse {
-    'data'?: VideoObject;
+    'data'?: Video;
     'status'?: string;
     static readonly discriminator?: string;
     static readonly attributeTypeMap: Array<AttributeType>;

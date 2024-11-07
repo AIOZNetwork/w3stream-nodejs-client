@@ -15,6 +15,7 @@ import Theme from './Theme.js';
 
 export default class CreatePlayerThemeRequest {
   'controls'?: Controls;
+  'isDefault'?: boolean;
   'name'?: string;
   'theme'?: Theme;
 
@@ -25,6 +26,12 @@ export default class CreatePlayerThemeRequest {
       name: 'controls',
       baseName: 'controls',
       type: 'Controls',
+      format: '',
+    },
+    {
+      name: 'isDefault',
+      baseName: 'is_default',
+      type: 'boolean',
       format: '',
     },
     {

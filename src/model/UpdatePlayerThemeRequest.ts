@@ -10,12 +10,10 @@
  */
 
 import AttributeType from './AttributeType.js';
-import Asset from './Asset.js';
 import Controls from './Controls.js';
 import Theme from './Theme.js';
 
 export default class UpdatePlayerThemeRequest {
-  'asset'?: Asset;
   'controls'?: Controls;
   'isDefault'?: boolean;
   'name'?: string;
@@ -24,12 +22,6 @@ export default class UpdatePlayerThemeRequest {
   static readonly discriminator?: string = undefined;
 
   static readonly attributeTypeMap: Array<AttributeType> = [
-    {
-      name: 'asset',
-      baseName: 'asset',
-      type: 'Asset',
-      format: '',
-    },
     {
       name: 'controls',
       baseName: 'controls',

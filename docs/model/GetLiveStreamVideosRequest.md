@@ -11,6 +11,8 @@ Name | Type | Description | Notes
 **orderBy** | **string** |  |  [optional]
 **search** | **string** |  |  [optional]
 **sortBy** | **string** |  |  [optional]
+**status** | **string** |  |  [optional]
+**videoStatus** | **string** |  |  [optional]
 
 
 

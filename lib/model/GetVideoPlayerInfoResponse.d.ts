@@ -15,7 +15,7 @@ import QualityObject from './QualityObject.js';
 import VideoAssets from './VideoAssets.js';
 import VideoCaption from './VideoCaption.js';
 import VideoChapter from './VideoChapter.js';
-export default class VideoObject {
+export default class GetVideoPlayerInfoResponse {
     'assets'?: VideoAssets;
     'captions'?: Array<VideoCaption>;
     'chapters'?: Array<VideoChapter>;

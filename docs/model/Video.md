@@ -24,6 +24,7 @@ Name | Type | Description | Notes
 **title** | **string** |  |  [optional]
 **updatedAt** | **string** |  |  [optional]
 **userId** | **string** |  |  [optional]
+**view** | **number** |  |  [optional]
 
 
 

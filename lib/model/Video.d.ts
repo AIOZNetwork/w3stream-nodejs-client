@@ -35,6 +35,7 @@ export default class Video {
     'title'?: string;
     'updatedAt'?: string;
     'userId'?: string;
+    'view'?: number;
     static readonly discriminator?: string;
     static readonly attributeTypeMap: Array<AttributeType>;
     static getAttributeTypeMap(): Array<AttributeType>;

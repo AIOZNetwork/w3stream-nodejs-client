@@ -1,6 +1,6 @@
 {
   "name": "@w3stream/nodejs-client",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "w3stream nodejs API client",
    "keywords": [
     "w3stream",

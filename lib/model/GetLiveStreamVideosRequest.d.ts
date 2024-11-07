@@ -16,6 +16,8 @@ export default class GetLiveStreamVideosRequest {
     'orderBy'?: string;
     'search'?: string;
     'sortBy'?: string;
+    'status'?: string;
+    'videoStatus'?: string;
     static readonly discriminator?: string;
     static readonly attributeTypeMap: Array<AttributeType>;
     static getAttributeTypeMap(): Array<AttributeType>;

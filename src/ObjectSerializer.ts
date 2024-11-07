@@ -11,6 +11,7 @@
  */
 
 import AddPlayerThemesToVideoRequest from './model/AddPlayerThemesToVideoRequest';
+import AddVideoToPlaylistRequest from './model/AddVideoToPlaylistRequest';
 import ApiKey from './model/ApiKey';
 import Asset from './model/Asset';
 import Controls from './model/Controls';
@@ -22,6 +23,9 @@ import CreateLiveStreamKeyResponse from './model/CreateLiveStreamKeyResponse';
 import CreatePlayerThemeRequest from './model/CreatePlayerThemeRequest';
 import CreatePlayerThemesData from './model/CreatePlayerThemesData';
 import CreatePlayerThemesResponse from './model/CreatePlayerThemesResponse';
+import CreatePlaylistData from './model/CreatePlaylistData';
+import CreatePlaylistRequest from './model/CreatePlaylistRequest';
+import CreatePlaylistResponse from './model/CreatePlaylistResponse';
 import CreateStreamingRequest from './model/CreateStreamingRequest';
 import CreateStreamingResponse from './model/CreateStreamingResponse';
 import CreateVideoCaptionData from './model/CreateVideoCaptionData';
@@ -51,6 +55,11 @@ import GetPlayerThemeByIdData from './model/GetPlayerThemeByIdData';
 import GetPlayerThemeByIdResponse from './model/GetPlayerThemeByIdResponse';
 import GetPlayerThemeData from './model/GetPlayerThemeData';
 import GetPlayerThemeResponse from './model/GetPlayerThemeResponse';
+import GetPlaylistByIdData from './model/GetPlaylistByIdData';
+import GetPlaylistByIdResponse from './model/GetPlaylistByIdResponse';
+import GetPlaylistListData from './model/GetPlaylistListData';
+import GetPlaylistListRequest from './model/GetPlaylistListRequest';
+import GetPlaylistListResponse from './model/GetPlaylistListResponse';
 import GetStreamingResponse from './model/GetStreamingResponse';
 import GetStreamingsResponse from './model/GetStreamingsResponse';
 import GetTranscodeCostData from './model/GetTranscodeCostData';
@@ -74,7 +83,12 @@ import LiveStreamVideoData from './model/LiveStreamVideoData';
 import LiveStreamVideoResponse from './model/LiveStreamVideoResponse';
 import LiveStreamVideosResponse from './model/LiveStreamVideosResponse';
 import Metadata from './model/Metadata';
+import MoveVideoInPlaylistRequest from './model/MoveVideoInPlaylistRequest';
 import PlayerTheme from './model/PlayerTheme';
+import Playlist from './model/Playlist';
+import PlaylistItem from './model/PlaylistItem';
+import PlaylistItemVideo from './model/PlaylistItemVideo';
+import PublicPlaylistObject from './model/PublicPlaylistObject';
 import QualityObject from './model/QualityObject';
 import RemovePlayerThemesFromVideoRequest from './model/RemovePlayerThemesFromVideoRequest';
 import RenameAPIKeyRequest from './model/RenameAPIKeyRequest';
@@ -111,6 +125,13 @@ const primitives = [
   'any',
 ];
 
+export const COLLECTION_FORMATS = {
+  csv: ',',
+  ssv: ' ',
+  tsv: '\t',
+  pipes: '|',
+};
+
 const supportedMediaTypes: { [mediaType: string]: number } = {
   'application/json': Infinity,
   'application/octet-stream': 0,
@@ -120,6 +141,7 @@ const enumsMap: Set<string> = new Set<string>([]);
 
 const typeMap: { [index: string]: any } = {
   AddPlayerThemesToVideoRequest: AddPlayerThemesToVideoRequest,
+  AddVideoToPlaylistRequest: AddVideoToPlaylistRequest,
   ApiKey: ApiKey,
   Asset: Asset,
   Controls: Controls,
@@ -131,6 +153,9 @@ const typeMap: { [index: string]: any } = {
   CreatePlayerThemeRequest: CreatePlayerThemeRequest,
   CreatePlayerThemesData: CreatePlayerThemesData,
   CreatePlayerThemesResponse: CreatePlayerThemesResponse,
+  CreatePlaylistData: CreatePlaylistData,
+  CreatePlaylistRequest: CreatePlaylistRequest,
+  CreatePlaylistResponse: CreatePlaylistResponse,
   CreateStreamingRequest: CreateStreamingRequest,
   CreateStreamingResponse: CreateStreamingResponse,
   CreateVideoCaptionData: CreateVideoCaptionData,
@@ -160,6 +185,11 @@ const typeMap: { [index: string]: any } = {
   GetPlayerThemeByIdResponse: GetPlayerThemeByIdResponse,
   GetPlayerThemeData: GetPlayerThemeData,
   GetPlayerThemeResponse: GetPlayerThemeResponse,
+  GetPlaylistByIdData: GetPlaylistByIdData,
+  GetPlaylistByIdResponse: GetPlaylistByIdResponse,
+  GetPlaylistListData: GetPlaylistListData,
+  GetPlaylistListRequest: GetPlaylistListRequest,
+  GetPlaylistListResponse: GetPlaylistListResponse,
   GetStreamingResponse: GetStreamingResponse,
   GetStreamingsResponse: GetStreamingsResponse,
   GetTranscodeCostData: GetTranscodeCostData,
@@ -183,7 +213,12 @@ const typeMap: { [index: string]: any } = {
   LiveStreamVideoResponse: LiveStreamVideoResponse,
   LiveStreamVideosResponse: LiveStreamVideosResponse,
   Metadata: Metadata,
+  MoveVideoInPlaylistRequest: MoveVideoInPlaylistRequest,
   PlayerTheme: PlayerTheme,
+  Playlist: Playlist,
+  PlaylistItem: PlaylistItem,
+  PlaylistItemVideo: PlaylistItemVideo,
+  PublicPlaylistObject: PublicPlaylistObject,
   QualityObject: QualityObject,
   RemovePlayerThemesFromVideoRequest: RemovePlayerThemesFromVideoRequest,
   RenameAPIKeyRequest: RenameAPIKeyRequest,

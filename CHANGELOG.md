@@ -17,4 +17,7 @@ All changes to this project will be documented in this file.
 - Add live stream api client.
 
 ## [1.0.4] - 2024-10-25
-- Update get api live stream player info name and add api get video player info 
+- Update get api live stream player info name and add api get video player info
+
+## [1.0.5] - 2024-11-07
+- Update get api live stream player and add api playlist

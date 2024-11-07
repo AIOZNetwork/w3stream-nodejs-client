@@ -13,6 +13,7 @@ import Controls from './Controls.js';
 import Theme from './Theme.js';
 export default class CreatePlayerThemeRequest {
     'controls'?: Controls;
+    'isDefault'?: boolean;
     'name'?: string;
     'theme'?: Theme;
     static readonly discriminator?: string;
