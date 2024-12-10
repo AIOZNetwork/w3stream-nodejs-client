@@ -1,6 +1,6 @@
 /**
  * @w3stream/nodejs-client
- * W3STREAM Service
+ * VMS Service
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -17,7 +17,6 @@ import PlayersApi from './api/PlayersApi';
 import PlaylistApi from './api/PlaylistApi';
 import VideoApi from './api/VideoApi';
 import VideoChapterApi from './api/VideoChapterApi';
-import WatermarkApi from './api/WatermarkApi';
 import WebhookApi from './api/WebhookApi';
 import { createReadStream, existsSync, statSync } from 'fs';
 import UploadProgressEvent from './model/UploadProgressEvent';
@@ -39,7 +38,6 @@ class W3StreamClient {
   private _playlist: PlaylistApi;
   private _video: VideoApi;
   private _videoChapter: VideoChapterApi;
-  private _watermark: WatermarkApi;
   private _webhook: WebhookApi;
 
   constructor(params: {
@@ -86,7 +84,6 @@ class W3StreamClient {
     this._playlist = new PlaylistApi(this.httpClient);
     this._video = new VideoApi(this.httpClient);
     this._videoChapter = new VideoChapterApi(this.httpClient);
-    this._watermark = new WatermarkApi(this.httpClient);
     this._webhook = new WebhookApi(this.httpClient);
   }
 
@@ -136,14 +133,6 @@ class W3StreamClient {
    */
   public get videoChapter(): VideoChapterApi {
     return this._videoChapter;
-  }
-
-  /**
-   * Get an WatermarkApi instance
-   * @return WatermarkApi
-   */
-  public get watermark(): WatermarkApi {
-    return this._watermark;
   }
 
   /**

@@ -1,6 +1,6 @@
 /**
  * @w3stream/nodejs-client
- * W3STREAM Service
+ * VMS Service
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -205,7 +205,7 @@ export default class WebhookApi {
   }
 
   /**
-   * This method will delete the indicated webhook.
+   * This endpoint will delete the indicated webhook.
    * Delete webhook
    * @param id Webhook ID
    */
@@ -214,7 +214,7 @@ export default class WebhookApi {
   }
 
   /**
-   * This method will delete the indicated webhook.
+   * This endpoint will delete the indicated webhook.
    * Delete webhook
    * @param id Webhook ID
    */
@@ -394,7 +394,7 @@ You can filter what the webhook list that the API returns using the parameters d
   }
 
   /**
-   * This method will check the indicated webhook.
+   * This endpoint will check the indicated webhook.
    * Check webhook by id
    * @param id webhook&#39;s id
    */
@@ -403,7 +403,7 @@ You can filter what the webhook list that the API returns using the parameters d
   }
 
   /**
-   * This method will check the indicated webhook.
+   * This endpoint will check the indicated webhook.
    * Check webhook by id
    * @param id webhook&#39;s id
    */

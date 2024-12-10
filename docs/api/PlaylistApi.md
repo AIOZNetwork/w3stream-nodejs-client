@@ -4,42 +4,20 @@ All URIs are relative to *http://localhost/api*
 
 | Method | Description | HTTP request |
 | ------------- | ------------- | ------------- |
-| [**deleteThumbnail()**](PlaylistApi.md#deleteThumbnail) | Delete a playlist thumbnail | **DELETE** /playlists/{id}/thumbnail |
-| [**addItem()**](PlaylistApi.md#addItem) | Add a video to a playlist | **POST** /playlists/{id}/items |
-| [**createPlaylist()**](PlaylistApi.md#createPlaylist) | Create a new playlist | **POST** /playlists/create |
-| [**deleteItem()**](PlaylistApi.md#deleteItem) | Remove a video from a playlist | **DELETE** /playlists/{id}/items/{item_id} |
-| [**deletePlaylist()**](PlaylistApi.md#deletePlaylist) | Delete a playlist by ID | **DELETE** /playlists/{id} |
+| [**addVideoToPlaylist()**](PlaylistApi.md#addVideoToPlaylist) | Add a video to a playlist | **POST** /playlists/{id}/items |
+| [**createPlaylist()**](PlaylistApi.md#createPlaylist) | Create a playlist | **POST** /playlists/create |
+| [**deletePlaylistById()**](PlaylistApi.md#deletePlaylistById) | Delete a playlist by ID | **DELETE** /playlists/{id} |
+| [**deletePlaylistThumbnail()**](PlaylistApi.md#deletePlaylistThumbnail) | Delete a playlist thumbnail | **DELETE** /playlists/{id}/thumbnail |
 | [**getPlaylistById()**](PlaylistApi.md#getPlaylistById) | Get playlist by ID | **GET** /playlists/{id} |
-| [**getPlaylistInfo()**](PlaylistApi.md#getPlaylistInfo) | Get a playlist public | **GET** /playlists/{id}/player.json |
+| [**getPlaylistPublicInfo()**](PlaylistApi.md#getPlaylistPublicInfo) | Get a playlist public | **GET** /playlists/{id}/player.json |
 | [**getPlaylists()**](PlaylistApi.md#getPlaylists) | Get user&#39;s playlists | **POST** /playlists |
-| [**moveItems()**](PlaylistApi.md#moveItems) | Move a video within a playlist | **PUT** /playlists/{id}/items |
+| [**moveVideoInPlaylist()**](PlaylistApi.md#moveVideoInPlaylist) | Move a video in a playlist | **PUT** /playlists/{id}/items |
+| [**removeVideoFromPlaylist()**](PlaylistApi.md#removeVideoFromPlaylist) | Remove a video from a playlist | **DELETE** /playlists/{id}/items/{item_id} |
 | [**updatePlaylist()**](PlaylistApi.md#updatePlaylist) | Update a playlist | **PATCH** /playlists/{id} |
 
 
-<a name="deleteThumbnail"></a>
-## **`deleteThumbnail()` - Delete a playlist thumbnail**
-
-
-Delete the thumbnail of a specific playlist for the authenticated user
-
-### Parameters
-
-| Name | Type | Required | Description |
-| ------------- | ------------- | ------------- | ------------- |
- | **id** | **string**| **yes**| Playlist ID |
-
-
-### Return type
-
-Promise<[**ResponseSuccess**](../model/ResponseSuccess.md)>.
-
-
-
-
----
-
-<a name="addItem"></a>
-## **`addItem()` - Add a video to a playlist**
+<a name="addVideoToPlaylist"></a>
+## **`addVideoToPlaylist()` - Add a video to a playlist**
 
 
 Add a specific video to a playlist for the authenticated user
@@ -49,7 +27,7 @@ Add a specific video to a playlist for the authenticated user
 | Name | Type | Required | Description |
 | ------------- | ------------- | ------------- | ------------- |
  | **id** | **string**| **yes**| Playlist ID |
- | **request** | [**AddVideoToPlaylistRequest**](../model/AddVideoToPlaylistRequest.md)| **yes**| Video details |
+ | **payload** | [**AddVideoToPlaylistRequest**](../model/AddVideoToPlaylistRequest.md)| **yes**| Video details |
 
 
 ### Return type
@@ -62,16 +40,16 @@ Promise<[**ResponseSuccess**](../model/ResponseSuccess.md)>.
 ---
 
 <a name="createPlaylist"></a>
-## **`createPlaylist()` - Create a new playlist**
+## **`createPlaylist()` - Create a playlist**
 
 
-Create a new playlist for the authenticated user
+Create a playlist for the authenticated user
 
 ### Parameters
 
 | Name | Type | Required | Description |
 | ------------- | ------------- | ------------- | ------------- |
- | **payload** | [**CreatePlaylistRequest**](../model/CreatePlaylistRequest.md)| **yes**| Create playlist request |
+ | **request** | [**CreatePlaylistRequest**](../model/CreatePlaylistRequest.md)| **yes**| Playlist input |
 
 
 ### Return type
@@ -83,18 +61,17 @@ Promise<[**CreatePlaylistResponse**](../model/CreatePlaylistResponse.md)>.
 
 ---
 
-<a name="deleteItem"></a>
-## **`deleteItem()` - Remove a video from a playlist**
+<a name="deletePlaylistById"></a>
+## **`deletePlaylistById()` - Delete a playlist by ID**
 
 
-Remove a specific video from a playlist for the authenticated user
+Delete a specific playlist by its ID for the authenticated user
 
 ### Parameters
 
 | Name | Type | Required | Description |
 | ------------- | ------------- | ------------- | ------------- |
  | **id** | **string**| **yes**| Playlist ID |
- | **itemId** | **string**| **yes**| Playlist Item ID |
 
 
 ### Return type
@@ -106,11 +83,11 @@ Promise<[**ResponseSuccess**](../model/ResponseSuccess.md)>.
 
 ---
 
-<a name="deletePlaylist"></a>
-## **`deletePlaylist()` - Delete a playlist by ID**
+<a name="deletePlaylistThumbnail"></a>
+## **`deletePlaylistThumbnail()` - Delete a playlist thumbnail**
 
 
-Delete a specific playlist by its ID for the authenticated user
+Delete the thumbnail of a specific playlist for the authenticated user
 
 ### Parameters
 
@@ -139,8 +116,8 @@ Retrieve a specific playlist by its ID for the current user.
 | Name | Type | Required | Description |
 | ------------- | ------------- | ------------- | ------------- |
  | **id** | **string**| **yes**| Playlist ID |
- | **sortBy** | **&#39;created_at&#39; \| &#39;title&#39;**| no| Sort field |
- | **orderBy** | **&#39;asc&#39; \| &#39;desc&#39;**| no| Sort order |
+ | **sortBy** | **&#39;created_at&#39; \| &#39;title&#39; \| &#39;duration&#39;**| no| sort by |
+ | **orderBy** | **&#39;asc&#39; \| &#39;desc&#39;**| no| allowed: asc, desc. Default: asc |
 
 
 ### Return type
@@ -152,8 +129,8 @@ Promise<[**GetPlaylistByIdResponse**](../model/GetPlaylistByIdResponse.md)>.
 
 ---
 
-<a name="getPlaylistInfo"></a>
-## **`getPlaylistInfo()` - Get a playlist public**
+<a name="getPlaylistPublicInfo"></a>
+## **`getPlaylistPublicInfo()` - Get a playlist public**
 
 
 Get a specific playlist public by its ID
@@ -184,7 +161,7 @@ Retrieve a list of playlists for the authenticated user
 
 | Name | Type | Required | Description |
 | ------------- | ------------- | ------------- | ------------- |
- | **payload** | [**GetPlaylistListRequest**](../model/GetPlaylistListRequest.md)| **yes**| Get playlist list request |
+ | **request** | [**GetPlaylistListRequest**](../model/GetPlaylistListRequest.md)| **yes**| Playlist filter |
 
 
 ### Return type
@@ -196,18 +173,41 @@ Promise<[**GetPlaylistListResponse**](../model/GetPlaylistListResponse.md)>.
 
 ---
 
-<a name="moveItems"></a>
-## **`moveItems()` - Move a video within a playlist**
+<a name="moveVideoInPlaylist"></a>
+## **`moveVideoInPlaylist()` - Move a video in a playlist**
 
 
-Change the position of a video in a playlist for the authenticated user.
+Move a specific video in a playlist for the authenticated user
 
 ### Parameters
 
 | Name | Type | Required | Description |
 | ------------- | ------------- | ------------- | ------------- |
  | **id** | **string**| **yes**| Playlist ID |
- | **payload** | [**MoveVideoInPlaylistRequest**](../model/MoveVideoInPlaylistRequest.md)| **yes**| Move video details |
+ | **payload** | [**MoveVideoInPlaylistRequest**](../model/MoveVideoInPlaylistRequest.md)| **yes**| Video details |
+
+
+### Return type
+
+Promise<[**ResponseSuccess**](../model/ResponseSuccess.md)>.
+
+
+
+
+---
+
+<a name="removeVideoFromPlaylist"></a>
+## **`removeVideoFromPlaylist()` - Remove a video from a playlist**
+
+
+Remove a specific video from a playlist for the authenticated user
+
+### Parameters
+
+| Name | Type | Required | Description |
+| ------------- | ------------- | ------------- | ------------- |
+ | **id** | **string**| **yes**| Playlist ID |
+ | **itemId** | **string**| **yes**| Playlist Item ID |
 
 
 ### Return type
@@ -223,17 +223,17 @@ Promise<[**ResponseSuccess**](../model/ResponseSuccess.md)>.
 ## **`updatePlaylist()` - Update a playlist**
 
 
-Update details of a specific playlist for the authenticated user
+Update a specific playlist for the authenticated user
 
 ### Parameters
 
 | Name | Type | Required | Description |
 | ------------- | ------------- | ------------- | ------------- |
  | **id** | **string**| **yes**| Playlist ID |
- | **file** | **string \| Readable \| Buffer**| **yes**| Thumbnail |
- | **name** | **string**| no| Playlist name |
- | **tags** | **Array&lt;string&gt;**| no| Tags |
- | **metadata** | **Array&lt;string&gt;**| no| Metadata |
+ | **file** | **string \| Readable \| Buffer**| **yes**|  |
+ | **metadata** | **Array&lt;Metadata&gt;**| no|  |
+ | **name** | **string**| no|  |
+ | **tags** | **Array&lt;string&gt;**| no|  |
 
 
 ### Return type
