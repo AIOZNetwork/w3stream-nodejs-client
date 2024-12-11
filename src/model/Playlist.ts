@@ -1,6 +1,6 @@
 /**
  * @w3stream/nodejs-client
- * W3STREAM Service
+ * VMS Service
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -18,10 +18,10 @@ export default class Playlist {
   'id'?: string;
   'iframe'?: string;
   'itemCount'?: number;
-  'metadata'?: Array<{ [key: string]: string }>;
+  'metadata'?: { [key: string]: string };
   'name'?: string;
   'size'?: number;
-  'tags'?: Array<string>;
+  'tags'?: string;
   'thumbnailId'?: string;
   'thumbnailUrl'?: string;
   'updatedAt'?: string;
@@ -64,7 +64,7 @@ export default class Playlist {
     {
       name: 'metadata',
       baseName: 'metadata',
-      type: 'Array<{ [key: string]: string; }>',
+      type: '{ [key: string]: string; }',
       format: '',
     },
     {
@@ -82,7 +82,7 @@ export default class Playlist {
     {
       name: 'tags',
       baseName: 'tags',
-      type: 'Array<string>',
+      type: 'string',
       format: '',
     },
     {

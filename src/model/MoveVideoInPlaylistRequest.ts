@@ -1,6 +1,6 @@
 /**
  * @w3stream/nodejs-client
- * W3STREAM Service
+ * VMS Service
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -12,17 +12,8 @@
 import AttributeType from './AttributeType.js';
 
 export default class MoveVideoInPlaylistRequest {
-  /**
-   * CurrentId is the UUID of the playlist item (video) to be moved
-   */
   'currentId'?: string;
-  /**
-   * NextId is the UUID of the playlist item that should come after the moved item
-   */
   'nextId'?: string;
-  /**
-   * PreviousId is the UUID of the playlist item that should come before the moved item
-   */
   'previousId'?: string;
 
   static readonly discriminator?: string = undefined;

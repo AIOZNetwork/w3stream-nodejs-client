@@ -1,6 +1,6 @@
 /**
  * @w3stream/nodejs-client
- * W3STREAM Service
+ * VMS Service
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -26,7 +26,6 @@ import GetVideoListRequest from '../model/GetVideoListRequest';
 import GetVideoListResponse from '../model/GetVideoListResponse';
 import GetVideoPlayerInfoResponse from '../model/GetVideoPlayerInfoResponse';
 import ResponseSuccess from '../model/ResponseSuccess';
-import SetDefaultCaptionRequest from '../model/SetDefaultCaptionRequest';
 import UpdateVideoInfoRequest from '../model/UpdateVideoInfoRequest';
 import UploadProgressEvent from '../model/UploadProgressEvent';
 import { Readable } from 'stream';
@@ -758,49 +757,40 @@ export default class VideoApi {
   }
 
   /**
-   * Sets the default caption for the specified video and language.
-   * Set default video caption
+   * Set default caption for a video
+   * Set default caption
    * @param id Video ID
    * @param lan Language
-   * @param isDefault Set Default Caption Request
    */
-  public async setCaption(
+  public async setDefaultCaption(
     id: string,
-    lan: string,
-    isDefault: SetDefaultCaptionRequest = {}
+    lan: string
   ): Promise<ResponseSuccess> {
-    return this.setCaptionWithResponseHeaders(id, lan, isDefault).then(
+    return this.setDefaultCaptionWithResponseHeaders(id, lan).then(
       (res) => res.body
     );
   }
 
   /**
-   * Sets the default caption for the specified video and language.
-   * Set default video caption
+   * Set default caption for a video
+   * Set default caption
    * @param id Video ID
    * @param lan Language
-   * @param isDefault Set Default Caption Request
    */
-  public async setCaptionWithResponseHeaders(
+  public async setDefaultCaptionWithResponseHeaders(
     id: string,
-    lan: string,
-    isDefault: SetDefaultCaptionRequest = {}
+    lan: string
   ): Promise<{ headers: ApiResponseHeaders; body: ResponseSuccess }> {
     const queryParams: QueryOptions = {};
     queryParams.headers = {};
     if (id === null || id === undefined) {
       throw new Error(
-        'Required parameter id was null or undefined when calling setCaption.'
+        'Required parameter id was null or undefined when calling setDefaultCaption.'
       );
     }
     if (lan === null || lan === undefined) {
       throw new Error(
-        'Required parameter lan was null or undefined when calling setCaption.'
-      );
-    }
-    if (isDefault === null || isDefault === undefined) {
-      throw new Error(
-        'Required parameter isDefault was null or undefined when calling setCaption.'
+        'Required parameter lan was null or undefined when calling setDefaultCaption.'
       );
     }
     // Path Params
@@ -808,19 +798,6 @@ export default class VideoApi {
       .substring(1)
       .replace('{' + 'id' + '}', encodeURIComponent(String(id)))
       .replace('{' + 'lan' + '}', encodeURIComponent(String(lan)));
-
-    // Body Params
-    const contentType = ObjectSerializer.getPreferredMediaType([
-      'application/json',
-
-      'application/x-www-form-urlencoded',
-    ]);
-    queryParams.headers['Content-Type'] = contentType;
-
-    queryParams.body = ObjectSerializer.stringify(
-      ObjectSerializer.serialize(isDefault, 'SetDefaultCaptionRequest', ''),
-      contentType
-    );
 
     queryParams.method = 'PATCH';
 

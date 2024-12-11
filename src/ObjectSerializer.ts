@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-module-boundary-types, @typescript-eslint/no-non-null-assertion */
 /**
  * @w3stream/nodejs-client
- * W3STREAM Service
+ * VMS Service
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -34,13 +34,9 @@ import CreateVideoChapterData from './model/CreateVideoChapterData';
 import CreateVideoChapterResponse from './model/CreateVideoChapterResponse';
 import CreateVideoRequest from './model/CreateVideoRequest';
 import CreateVideoResponse from './model/CreateVideoResponse';
-import CreateWatermarkData from './model/CreateWatermarkData';
-import CreateWatermarkResponse from './model/CreateWatermarkResponse';
 import CreateWebhookData from './model/CreateWebhookData';
 import CreateWebhookRequest from './model/CreateWebhookRequest';
 import CreateWebhookResponse from './model/CreateWebhookResponse';
-import GetAllWatermarkData from './model/GetAllWatermarkData';
-import GetAllWatermarkResponse from './model/GetAllWatermarkResponse';
 import GetApiKeysData from './model/GetApiKeysData';
 import GetApiKeysResponse from './model/GetApiKeysResponse';
 import GetLiveStreamKeyData from './model/GetLiveStreamKeyData';
@@ -94,12 +90,10 @@ import RemovePlayerThemesFromVideoRequest from './model/RemovePlayerThemesFromVi
 import RenameAPIKeyRequest from './model/RenameAPIKeyRequest';
 import ResponseError from './model/ResponseError';
 import ResponseSuccess from './model/ResponseSuccess';
-import SetDefaultCaptionRequest from './model/SetDefaultCaptionRequest';
 import Theme from './model/Theme';
 import UpdateLiveStreamKeyData from './model/UpdateLiveStreamKeyData';
 import UpdateLiveStreamKeyRequest from './model/UpdateLiveStreamKeyRequest';
 import UpdateLiveStreamKeyResponse from './model/UpdateLiveStreamKeyResponse';
-import UpdateLiveStreamVideoRequest from './model/UpdateLiveStreamVideoRequest';
 import UpdatePlayerThemeRequest from './model/UpdatePlayerThemeRequest';
 import UpdatePlayerThemeResponse from './model/UpdatePlayerThemeResponse';
 import UpdateVideoInfoRequest from './model/UpdateVideoInfoRequest';
@@ -110,7 +104,6 @@ import VideoAssets from './model/VideoAssets';
 import VideoCaption from './model/VideoCaption';
 import VideoChapter from './model/VideoChapter';
 import VideoWatermark from './model/VideoWatermark';
-import Watermark from './model/Watermark';
 import Webhook from './model/Webhook';
 
 /* tslint:disable:no-unused-variable */
@@ -164,13 +157,9 @@ const typeMap: { [index: string]: any } = {
   CreateVideoChapterResponse: CreateVideoChapterResponse,
   CreateVideoRequest: CreateVideoRequest,
   CreateVideoResponse: CreateVideoResponse,
-  CreateWatermarkData: CreateWatermarkData,
-  CreateWatermarkResponse: CreateWatermarkResponse,
   CreateWebhookData: CreateWebhookData,
   CreateWebhookRequest: CreateWebhookRequest,
   CreateWebhookResponse: CreateWebhookResponse,
-  GetAllWatermarkData: GetAllWatermarkData,
-  GetAllWatermarkResponse: GetAllWatermarkResponse,
   GetApiKeysData: GetApiKeysData,
   GetApiKeysResponse: GetApiKeysResponse,
   GetLiveStreamKeyData: GetLiveStreamKeyData,
@@ -224,12 +213,10 @@ const typeMap: { [index: string]: any } = {
   RenameAPIKeyRequest: RenameAPIKeyRequest,
   ResponseError: ResponseError,
   ResponseSuccess: ResponseSuccess,
-  SetDefaultCaptionRequest: SetDefaultCaptionRequest,
   Theme: Theme,
   UpdateLiveStreamKeyData: UpdateLiveStreamKeyData,
   UpdateLiveStreamKeyRequest: UpdateLiveStreamKeyRequest,
   UpdateLiveStreamKeyResponse: UpdateLiveStreamKeyResponse,
-  UpdateLiveStreamVideoRequest: UpdateLiveStreamVideoRequest,
   UpdatePlayerThemeRequest: UpdatePlayerThemeRequest,
   UpdatePlayerThemeResponse: UpdatePlayerThemeResponse,
   UpdateVideoInfoRequest: UpdateVideoInfoRequest,
@@ -240,7 +227,6 @@ const typeMap: { [index: string]: any } = {
   VideoCaption: VideoCaption,
   VideoChapter: VideoChapter,
   VideoWatermark: VideoWatermark,
-  Watermark: Watermark,
   Webhook: Webhook,
 };
 

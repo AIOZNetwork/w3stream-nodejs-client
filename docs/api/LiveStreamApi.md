@@ -16,7 +16,6 @@ All URIs are relative to *http://localhost/api*
 | [**getStreaming()**](LiveStreamApi.md#getStreaming) | Get live stream video streaming | **GET** /live_streams/{id}/streamings/{stream_id} |
 | [**getStreamings()**](LiveStreamApi.md#getStreamings) | Get live stream video streamings | **GET** /live_streams/{id}/streamings |
 | [**updateLiveStreamKey()**](LiveStreamApi.md#updateLiveStreamKey) | Update live stream key | **PUT** /live_streams/{id} |
-| [**updateLiveStreamVideo()**](LiveStreamApi.md#updateLiveStreamVideo) | Update live stream video | **PUT** /live_streams/{id}/streamings |
 
 
 <a name="createLiveStreamKey"></a>
@@ -285,29 +284,6 @@ Update a live stream key by ID
 ### Return type
 
 Promise<[**UpdateLiveStreamKeyResponse**](../model/UpdateLiveStreamKeyResponse.md)>.
-
-
-
-
----
-
-<a name="updateLiveStreamVideo"></a>
-## **`updateLiveStreamVideo()` - Update live stream video**
-
-
-Update live stream video. You can only update while live streaming.
-
-### Parameters
-
-| Name | Type | Required | Description |
-| ------------- | ------------- | ------------- | ------------- |
- | **id** | **string**| **yes**| Live stream key ID |
- | **data** | [**UpdateLiveStreamVideoRequest**](../model/UpdateLiveStreamVideoRequest.md)| **yes**| data |
-
-
-### Return type
-
-Promise<[**ResponseSuccess**](../model/ResponseSuccess.md)>.
 
 
 

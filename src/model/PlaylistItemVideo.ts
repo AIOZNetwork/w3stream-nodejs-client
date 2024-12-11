@@ -1,6 +1,6 @@
 /**
  * @w3stream/nodejs-client
- * W3STREAM Service
+ * VMS Service
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -10,8 +10,10 @@
  */
 
 import AttributeType from './AttributeType.js';
+import VideoChapter from './VideoChapter.js';
 
 export default class PlaylistItemVideo {
+  'chapters'?: Array<VideoChapter>;
   'duration'?: number;
   'hlsUrl'?: string;
   'qualities'?: string;
@@ -21,6 +23,12 @@ export default class PlaylistItemVideo {
   static readonly discriminator?: string = undefined;
 
   static readonly attributeTypeMap: Array<AttributeType> = [
+    {
+      name: 'chapters',
+      baseName: 'chapters',
+      type: 'Array<VideoChapter>',
+      format: '',
+    },
     {
       name: 'duration',
       baseName: 'duration',

@@ -1,6 +1,6 @@
 /**
  * @w3stream/nodejs-client
- * W3STREAM Service
+ * VMS Service
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -10,21 +10,15 @@
  */
 
 import AttributeType from './AttributeType.js';
-import Watermark from './Watermark.js';
 
 export default class VideoWatermark {
   'bottom'?: string;
-  'createdAt'?: string;
   'height'?: string;
   'id'?: string;
   'left'?: string;
   'opacity'?: string;
   'right'?: string;
   'top'?: string;
-  'updatedAt'?: string;
-  'videoId'?: string;
-  'watermark'?: Watermark;
-  'watermarkId'?: string;
   'width'?: string;
 
   static readonly discriminator?: string = undefined;
@@ -33,12 +27,6 @@ export default class VideoWatermark {
     {
       name: 'bottom',
       baseName: 'bottom',
-      type: 'string',
-      format: '',
-    },
-    {
-      name: 'createdAt',
-      baseName: 'created_at',
       type: 'string',
       format: '',
     },
@@ -75,30 +63,6 @@ export default class VideoWatermark {
     {
       name: 'top',
       baseName: 'top',
-      type: 'string',
-      format: '',
-    },
-    {
-      name: 'updatedAt',
-      baseName: 'updated_at',
-      type: 'string',
-      format: '',
-    },
-    {
-      name: 'videoId',
-      baseName: 'video_id',
-      type: 'string',
-      format: '',
-    },
-    {
-      name: 'watermark',
-      baseName: 'watermark',
-      type: 'Watermark',
-      format: '',
-    },
-    {
-      name: 'watermarkId',
-      baseName: 'watermark_id',
       type: 'string',
       format: '',
     },

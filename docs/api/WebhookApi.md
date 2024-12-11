@@ -83,7 +83,7 @@ Promise<[**ResponseSuccess**](../model/ResponseSuccess.md)>.
 ## **`delete()` - Delete webhook**
 
 
-This method will delete the indicated webhook.
+This endpoint will delete the indicated webhook.
 
 ### Parameters
 
@@ -136,7 +136,7 @@ Promise<[**GetWebhooksListResponse**](../model/GetWebhooksListResponse.md)>.
 ## **`check()` - Check webhook by id**
 
 
-This method will check the indicated webhook.
+This endpoint will check the indicated webhook.
 
 ### Parameters
 

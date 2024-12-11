@@ -15,7 +15,7 @@ All URIs are relative to *http://localhost/api*
 | [**getDetail()**](VideoApi.md#getDetail) | get video detail | **GET** /videos/{id} |
 | [**getVideoList()**](VideoApi.md#getVideoList) | Get user videos list | **POST** /videos |
 | [**getVideoPlayerInfo()**](VideoApi.md#getVideoPlayerInfo) | Get video player info | **GET** /videos/{id}/player.json |
-| [**setCaption()**](VideoApi.md#setCaption) | Set default video caption | **PATCH** /videos/{id}/captions/{lan} |
+| [**setDefaultCaption()**](VideoApi.md#setDefaultCaption) | Set default caption | **PATCH** /videos/{id}/captions/{lan} |
 | [**uploadPart()**](VideoApi.md#uploadPart) | Upload part of video | **POST** /videos/{id}/part |
 | [**uploadVideoComplete()**](VideoApi.md#uploadVideoComplete) | Get upload video when complete | **GET** /videos/{id}/complete |
 
@@ -267,11 +267,11 @@ Promise<[**GetVideoPlayerInfoResponse**](../model/GetVideoPlayerInfoResponse.md)
 
 ---
 
-<a name="setCaption"></a>
-## **`setCaption()` - Set default video caption**
+<a name="setDefaultCaption"></a>
+## **`setDefaultCaption()` - Set default caption**
 
 
-Sets the default caption for the specified video and language.
+Set default caption for a video
 
 ### Parameters
 
@@ -279,7 +279,6 @@ Sets the default caption for the specified video and language.
 | ------------- | ------------- | ------------- | ------------- |
  | **id** | **string**| **yes**| Video ID |
  | **lan** | **string**| **yes**| Language |
- | **isDefault** | [**SetDefaultCaptionRequest**](../model/SetDefaultCaptionRequest.md)| **yes**| Set Default Caption Request |
 
 
 ### Return type

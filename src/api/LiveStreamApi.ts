@@ -1,6 +1,6 @@
 /**
  * @w3stream/nodejs-client
- * W3STREAM Service
+ * VMS Service
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -27,7 +27,6 @@ import GetStreamingsResponse from '../model/GetStreamingsResponse';
 import ResponseSuccess from '../model/ResponseSuccess';
 import UpdateLiveStreamKeyRequest from '../model/UpdateLiveStreamKeyRequest';
 import UpdateLiveStreamKeyResponse from '../model/UpdateLiveStreamKeyResponse';
-import UpdateLiveStreamVideoRequest from '../model/UpdateLiveStreamVideoRequest';
 
 /**
  * no description
@@ -771,76 +770,6 @@ export default class LiveStreamApi {
           'UpdateLiveStreamKeyResponse',
           ''
         ) as UpdateLiveStreamKeyResponse,
-      };
-    });
-  }
-
-  /**
-   * Update live stream video. You can only update while live streaming.
-   * Update live stream video
-   * @param id Live stream key ID
-   * @param data data
-   */
-  public async updateLiveStreamVideo(
-    id: string,
-    data: UpdateLiveStreamVideoRequest = {}
-  ): Promise<ResponseSuccess> {
-    return this.updateLiveStreamVideoWithResponseHeaders(id, data).then(
-      (res) => res.body
-    );
-  }
-
-  /**
-   * Update live stream video. You can only update while live streaming.
-   * Update live stream video
-   * @param id Live stream key ID
-   * @param data data
-   */
-  public async updateLiveStreamVideoWithResponseHeaders(
-    id: string,
-    data: UpdateLiveStreamVideoRequest = {}
-  ): Promise<{ headers: ApiResponseHeaders; body: ResponseSuccess }> {
-    const queryParams: QueryOptions = {};
-    queryParams.headers = {};
-    if (id === null || id === undefined) {
-      throw new Error(
-        'Required parameter id was null or undefined when calling updateLiveStreamVideo.'
-      );
-    }
-    if (data === null || data === undefined) {
-      throw new Error(
-        'Required parameter data was null or undefined when calling updateLiveStreamVideo.'
-      );
-    }
-    // Path Params
-    const localVarPath = '/live_streams/{id}/streamings'
-      .substring(1)
-      .replace('{' + 'id' + '}', encodeURIComponent(String(id)));
-
-    // Body Params
-    const contentType = ObjectSerializer.getPreferredMediaType([
-      'application/json',
-    ]);
-    queryParams.headers['Content-Type'] = contentType;
-
-    queryParams.body = ObjectSerializer.stringify(
-      ObjectSerializer.serialize(data, 'UpdateLiveStreamVideoRequest', ''),
-      contentType
-    );
-
-    queryParams.method = 'PUT';
-
-    return this.httpClient.call(localVarPath, queryParams).then((response) => {
-      return {
-        headers: response.headers,
-        body: ObjectSerializer.deserialize(
-          ObjectSerializer.parse(
-            response.body,
-            response.headers['content-type']
-          ),
-          'ResponseSuccess',
-          ''
-        ) as ResponseSuccess,
       };
     });
   }
