@@ -11,42 +11,28 @@
 
 import AttributeType from './AttributeType.js';
 
-export default class LiveStreamAssets {
-  'hlsUrl'?: string;
-  'iframe'?: string;
-  'playerUrl'?: string;
-  'thumbnailUrl'?: string;
+export default class CreateWatermarkData {
+  'createdAt'?: string;
+  'watermarkId'?: string;
 
   static readonly discriminator?: string = undefined;
 
   static readonly attributeTypeMap: Array<AttributeType> = [
     {
-      name: 'hlsUrl',
-      baseName: 'hls_url',
+      name: 'createdAt',
+      baseName: 'created_at',
       type: 'string',
       format: '',
     },
     {
-      name: 'iframe',
-      baseName: 'iframe',
-      type: 'string',
-      format: '',
-    },
-    {
-      name: 'playerUrl',
-      baseName: 'player_url',
-      type: 'string',
-      format: '',
-    },
-    {
-      name: 'thumbnailUrl',
-      baseName: 'thumbnail_url',
+      name: 'watermarkId',
+      baseName: 'watermark_id',
       type: 'string',
       format: '',
     },
   ];
 
   static getAttributeTypeMap(): Array<AttributeType> {
-    return LiveStreamAssets.attributeTypeMap;
+    return CreateWatermarkData.attributeTypeMap;
   }
 }

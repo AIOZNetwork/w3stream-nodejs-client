@@ -3,9 +3,10 @@ import W3StreamError from '../src/W3StreamError';
 import fs from 'fs';
 import path from 'path';
 import { mockTestClient } from './src/mockTestClient';
+import { v4 as uuidv4 } from 'uuid';
 
 const testLang = 'en';
-const testVideoIDForChapter = '16b0fb26-6d9c-4adc-a86e-026bd47a6a3a';
+const testVideoIDForChapter = '598b9aaa-f2dc-4622-9dfb-d1993a9c6165';
 const chapterContent = `WEBVTT
 
 00:00:00.000 --> 00:01:00.000
@@ -61,6 +62,15 @@ describe('VideoChapter Service', () => {
       tmpFilePath.close();
     });
 
+    it('Not exist Video ID', async () => {
+      const tmpFilePath = await createTempVTTFile();
+      const newId = uuidv4();
+      await expect(
+        testClient.videoChapter.create(newId, testLang, tmpFilePath)
+      ).rejects.toThrow(W3StreamError);
+      tmpFilePath.close();
+    });
+
     afterEach(() => {
       deleteTempVTTFile(tmpFilePath);
     });
@@ -81,6 +91,16 @@ describe('VideoChapter Service', () => {
       await expect(
         testClient.videoChapter.get({
           id: 'invalid-id',
+          limit: 10,
+          offset: 0,
+        })
+      ).rejects.toThrow(W3StreamError);
+    });
+    it('Not exist ID', async () => {
+      const newId = uuidv4();
+      await expect(
+        testClient.videoChapter.get({
+          id: newId,
           limit: 10,
           offset: 0,
         })
@@ -112,6 +132,13 @@ describe('VideoChapter Service', () => {
     it('Empty Language', async () => {
       await expect(
         testClient.videoChapter.delete(testVideoIDForChapter, '')
+      ).rejects.toThrow(W3StreamError);
+    });
+
+    it('Not exist ID', async () => {
+      const newId = uuidv4();
+      await expect(
+        testClient.videoChapter.delete(newId, testLang)
       ).rejects.toThrow(W3StreamError);
     });
   });

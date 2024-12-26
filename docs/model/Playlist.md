@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **itemCount** | **number** |  |  [optional]
 **metadata** | **Map&lt;String, string&gt;** |  |  [optional]
 **name** | **string** |  |  [optional]
+**playlistUrl** | **string** |  |  [optional]
 **size** | **number** |  |  [optional]
 **tags** | **string** |  |  [optional]
 **thumbnailId** | **string** |  |  [optional]

@@ -1,4 +1,7 @@
 #!/bin/sh
+npm install
+npm run prettier
+rm .openapi-generator-ignore package-lock.json
 
 git_user_id=$1
 git_repo_id=$2
@@ -23,26 +26,16 @@ fi
 if [ "$branch_suffix" = "" ]; then
     branch_suffix=$(date +%Y%m%d_%H%M%S)
     echo "[INFO] No branch name provided. Using timestamp: $branch_suffix"
+else
+    echo "[INFO] Using provided branch suffix: $branch_suffix"
 fi
-
-rm -rf .git
-
-git init
-
-git remote add origin git@github.com:${git_user_id}/${git_repo_id}.git
-
-git fetch origin main
-
-git branch main origin/main
-
-git checkout main
 
 git add .
 
-git commit -m "$release_note"
-
 branch_name="w3stream/$branch_suffix"
 git checkout -b $branch_name main
+
+git commit -m "$release_note"
 
 echo "Git pushing to git@github.com:${git_user_id}/${git_repo_id}.git"
 git push -u origin $branch_name
