@@ -10,17 +10,15 @@
  */
 
 import AttributeType from './AttributeType.js';
-import PlaylistItemVideo from './PlaylistItemVideo.js';
 
-export default class PlaylistItem {
+export default class Watermark {
   'createdAt'?: string;
+  'height'?: number;
   'id'?: string;
-  'nextId'?: string;
-  'playlistId'?: string;
-  'previousId'?: string;
   'updatedAt'?: string;
-  'video'?: PlaylistItemVideo;
-  'videoId'?: string;
+  'userId'?: string;
+  'watermarkName'?: string;
+  'width'?: number;
 
   static readonly discriminator?: string = undefined;
 
@@ -32,26 +30,14 @@ export default class PlaylistItem {
       format: '',
     },
     {
+      name: 'height',
+      baseName: 'height',
+      type: 'number',
+      format: '',
+    },
+    {
       name: 'id',
       baseName: 'id',
-      type: 'string',
-      format: '',
-    },
-    {
-      name: 'nextId',
-      baseName: 'next_id',
-      type: 'string',
-      format: '',
-    },
-    {
-      name: 'playlistId',
-      baseName: 'playlist_id',
-      type: 'string',
-      format: '',
-    },
-    {
-      name: 'previousId',
-      baseName: 'previous_id',
       type: 'string',
       format: '',
     },
@@ -62,20 +48,26 @@ export default class PlaylistItem {
       format: '',
     },
     {
-      name: 'video',
-      baseName: 'video',
-      type: 'PlaylistItemVideo',
+      name: 'userId',
+      baseName: 'user_id',
+      type: 'string',
       format: '',
     },
     {
-      name: 'videoId',
-      baseName: 'video_id',
+      name: 'watermarkName',
+      baseName: 'watermark_name',
       type: 'string',
+      format: '',
+    },
+    {
+      name: 'width',
+      baseName: 'width',
+      type: 'number',
       format: '',
     },
   ];
 
   static getAttributeTypeMap(): Array<AttributeType> {
-    return PlaylistItem.attributeTypeMap;
+    return Watermark.attributeTypeMap;
   }
 }

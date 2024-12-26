@@ -3,11 +3,11 @@ import W3StreamError from '../src/W3StreamError';
 import fs from 'fs';
 import { anonymousMockTestClient, mockTestClient } from './src/mockTestClient';
 import { openInvalidFile, openTestImageFile } from './Video.spec';
-
+import { v4 as uuidv4 } from 'uuid';
 let testPlayerIDForUpdateAndDeleteAndGet: string | undefined;
 const playerName = 'Test Player Theme';
 const logoURL = 'https://example.com/logo.png';
-const testVideoForPlayer = '33e074ba-0092-446d-821a-cd62f27b58f7';
+const testVideoForPlayer = '598b9aaa-f2dc-4622-9dfb-d1993a9c6165';
 
 const testClient = mockTestClient();
 const anonymousTestClient = anonymousMockTestClient();
@@ -179,6 +179,12 @@ describe('Players Service', () => {
         W3StreamError
       );
     });
+    it('Not exist ID', async () => {
+      const newId = uuidv4();
+      await expect(testClient.players.get(newId)).rejects.toThrow(
+        W3StreamError
+      );
+    });
   });
 
   describe('update', () => {
@@ -221,6 +227,15 @@ describe('Players Service', () => {
     it('Invalid ID', async () => {
       await expect(
         testClient.players.update('invalid-id', {
+          name: 'Updated Player Theme',
+        })
+      ).rejects.toThrow(W3StreamError);
+    });
+
+    it('Not exist ID', async () => {
+      const newId = uuidv4();
+      await expect(
+        testClient.players.update(newId, {
           name: 'Updated Player Theme',
         })
       ).rejects.toThrow(W3StreamError);
@@ -283,6 +298,13 @@ describe('Players Service', () => {
         W3StreamError
       );
     });
+
+    it('Not exist ID', async () => {
+      const newId = uuidv4();
+      await expect(testClient.players.deleteLogo(newId)).rejects.toThrow(
+        W3StreamError
+      );
+    });
   });
 
   describe('removePlayer', () => {
@@ -318,6 +340,16 @@ describe('Players Service', () => {
         })
       ).rejects.toThrow(W3StreamError);
     });
+
+    it('Not exist ID', async () => {
+      const newId = uuidv4();
+      await expect(
+        testClient.players.removePlayer({
+          playerThemeId: newId,
+          videoId: newId,
+        })
+      ).rejects.toThrow(W3StreamError);
+    });
   });
 
   describe('delete', () => {
@@ -343,6 +375,12 @@ describe('Players Service', () => {
 
     it('Empty ID', async () => {
       await expect(testClient.players.delete('')).rejects.toThrow(
+        W3StreamError
+      );
+    });
+    it('Not exist ID', async () => {
+      const newId = uuidv4();
+      await expect(testClient.players.delete(newId)).rejects.toThrow(
         W3StreamError
       );
     });

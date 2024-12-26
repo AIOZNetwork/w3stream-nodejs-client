@@ -15,14 +15,26 @@ jobs:
           node-version: '16'
       - name: Install dependencies
         run: npm install
+        
+      - name: Run Prettier
+        run: npm run prettier
+
+      - name: Install Jest
+        run: npm install jest
+
+      - name: Install dotenv
+        run: npm install dotenv --save
+
+      - name: Install uuid
+        run: npm install uuid
 
       - name: Create env file
         run: |
           touch .env
-          echo PUBLIC_KEY=${{ secrets.PUBLIC_KEY }} >> .env
-          echo SECRET_KEY=${{ secrets.SECRET_KEY }} >> .env
-          echo ANONYMOUS_PUBLIC_KEY=${{ secrets.ANONYMOUS_PUBLIC_KEY }} >> .env
-          echo ANONYMOUS_SECRET_KEY=${{ secrets.ANONYMOUS_SECRET_KEY }} >> .env
+          echo TEST_PUBLIC_KEY=${{ secrets.TEST_PUBLIC_KEY }} >> .env
+          echo TEST_SECRET_KEY=${{ secrets.TEST_SECRET_KEY }} >> .env
+          echo TEST_ANONYMOUS_PUBLIC_KEY=${{ secrets.TEST_ANONYMOUS_PUBLIC_KEY }} >> .env
+          echo TEST_ANONYMOUS_SECRET_KEY=${{ secrets.TEST_ANONYMOUS_SECRET_KEY }} >> .env
 
       - name: Run tests
         run: npm test
