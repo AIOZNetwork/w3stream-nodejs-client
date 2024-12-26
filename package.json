@@ -1,8 +1,8 @@
 {
   "name": "@w3stream/nodejs-client",
-  "version": "1.0.0",
+  "version": "1.0.6",
   "description": "w3stream nodejs API client",
-  "keywords": [
+   "keywords": [
     "w3stream",
     "api",
     "video",
@@ -40,18 +40,17 @@
   },
   "devDependencies": {
     "@tsconfig/node14": "^14.1.0",
-    "@types/jest": "^29.5.2",
     "@types/node": "^20.3.3",
     "@typescript-eslint/eslint-plugin": "^5.61.0",
     "@typescript-eslint/parser": "^5.61.0",
-    "dotenv": "^16.4.7",
     "eslint": "^8.44.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-unused-imports": "^2.0.0",
+    "@types/jest": "^29.5.2",
     "jest": "^29.6.0",
-    "prettier": "^2.8.8",
     "ts-jest": "^29.1.1",
-    "typescript": "^5.1.6"
+    "typescript": "^5.1.6",
+    "prettier": "^2.8.8"
   }
 }

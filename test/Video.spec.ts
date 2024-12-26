@@ -5,13 +5,13 @@ import W3StreamError from '../src/W3StreamError';
 import path from 'path';
 import { mockTestClient, anonymousMockTestClient } from './src/mockTestClient';
 import { createTempVTTFile } from './VideoChapter.spec';
-
+import { v4 as uuidv4 } from 'uuid';
 let testVideoID: string;
 const title = 'Test Video';
 const description = 'Test Description';
 const testLang = 'en';
 
-const testVideoCaptionID = '16b0fb26-6d9c-4adc-a86e-026bd47a6a3a';
+const testVideoCaptionID = '598b9aaa-f2dc-4622-9dfb-d1993a9c6165';
 
 async function getVideoFilePath(fileName: string): Promise<string> {
   return path.join(__dirname, '/data', fileName);
@@ -184,6 +184,15 @@ describe('Video Service', () => {
         })
       ).rejects.toThrow(W3StreamError);
     });
+
+    it('Not exist ID', async () => {
+      const newId = uuidv4();
+      await expect(
+        testClient.video.update(newId, {
+          title: title,
+        })
+      ).rejects.toThrow(W3StreamError);
+    });
   });
 
   describe('getDetail', () => {
@@ -213,6 +222,12 @@ describe('Video Service', () => {
 
     it('Empty ID', async () => {
       await expect(testClient.video.getDetail('')).rejects.toThrow(
+        W3StreamError
+      );
+    });
+    it('Not exist ID', async () => {
+      const newId = uuidv4();
+      await expect(testClient.video.getDetail(newId)).rejects.toThrow(
         W3StreamError
       );
     });
@@ -246,6 +261,13 @@ describe('Video Service', () => {
     it('Invalid Video ID', async () => {
       await expect(
         testClient.video.uploadThumbnail('invalid-id', validThumbnail)
+      ).rejects.toThrow(W3StreamError);
+    });
+
+    it('Not exist ID', async () => {
+      const newId = uuidv4();
+      await expect(
+        testClient.video.uploadThumbnail(newId, validThumbnail)
       ).rejects.toThrow(W3StreamError);
     });
   });
@@ -312,6 +334,14 @@ describe('Video Service', () => {
         testClient.video.uploadPart('invalid-id', video, videoHash, '1')
       ).rejects.toThrow(W3StreamError);
     });
+
+    it('Not exist ID', async () => {
+      const newId = uuidv4();
+      const video = await getVideoFilePath('558k.mp4');
+      await expect(testClient.video.uploadPart(newId, video)).rejects.toThrow(
+        W3StreamError
+      );
+    });
   });
 
   describe('uploadVideoComplete', () => {
@@ -351,6 +381,13 @@ describe('Video Service', () => {
         W3StreamError
       );
     });
+
+    it('Not exist ID', async () => {
+      const newId = uuidv4();
+      await expect(testClient.video.uploadVideoComplete(newId)).rejects.toThrow(
+        W3StreamError
+      );
+    });
   });
 
   describe('getVideoPlayerInfo', () => {
@@ -373,6 +410,15 @@ describe('Video Service', () => {
       await expect(
         testClient.video.getVideoPlayerInfo({
           id: '',
+        })
+      ).rejects.toThrow(W3StreamError);
+    });
+
+    it('Not exist ID', async () => {
+      const newId = uuidv4();
+      await expect(
+        testClient.video.getVideoPlayerInfo({
+          id: newId,
         })
       ).rejects.toThrow(W3StreamError);
     });
@@ -426,6 +472,14 @@ describe('Video Service', () => {
         })
       ).rejects.toThrow(W3StreamError);
     });
+    it('Not exist ID', async () => {
+      const newId = uuidv4();
+      await expect(
+        testClient.video.getCaptions({
+          id: newId,
+        })
+      ).rejects.toThrow(W3StreamError);
+    });
   });
 
   describe('setDefaultCaption', () => {
@@ -448,6 +502,12 @@ describe('Video Service', () => {
         testClient.video.setDefaultCaption('', testLang)
       ).rejects.toThrow(W3StreamError);
     });
+    it('Not exist ID', async () => {
+      const newId = uuidv4();
+      await expect(
+        testClient.video.setDefaultCaption(newId, testLang)
+      ).rejects.toThrow(W3StreamError);
+    });
   });
 
   describe('deleteCaption', () => {
@@ -462,6 +522,12 @@ describe('Video Service', () => {
     it('Invalid Video ID', async () => {
       await expect(
         testClient.video.deleteCaption('invalid-id', testLang)
+      ).rejects.toThrow(W3StreamError);
+    });
+    it('Not exist ID', async () => {
+      const newId = uuidv4();
+      await expect(
+        testClient.video.deleteCaption(newId, testLang)
       ).rejects.toThrow(W3StreamError);
     });
   });
@@ -502,6 +568,12 @@ describe('Video Service', () => {
 
     it('Invalid Video ID', async () => {
       await expect(testClient.video.delete('invalid-id')).rejects.toThrow(
+        W3StreamError
+      );
+    });
+    it('Not exist ID', async () => {
+      const newId = uuidv4();
+      await expect(testClient.video.delete(newId)).rejects.toThrow(
         W3StreamError
       );
     });

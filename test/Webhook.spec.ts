@@ -1,7 +1,7 @@
 import { expect } from '@jest/globals';
 import W3StreamError from '../src/W3StreamError';
 import { anonymousMockTestClient, mockTestClient } from './src/mockTestClient';
-
+import { v4 as uuidv4 } from 'uuid';
 let testWebhookForUpdateAndDelete: string | undefined;
 const webhookURL = 'https://webhook.site/335e64d4-96f7-4bef-906a-b8cd3862a071';
 const webhookName = 'Test Webhook';
@@ -122,6 +122,13 @@ describe('Webhook Service', () => {
         W3StreamError
       );
     });
+
+    it('Not exist ID', async () => {
+      const newId = uuidv4();
+      await expect(testClient.webhook.update(newId, {})).rejects.toThrow(
+        W3StreamError
+      );
+    });
   });
 
   describe('List', () => {
@@ -176,6 +183,13 @@ describe('Webhook Service', () => {
         W3StreamError
       );
     });
+
+    it('Not exist ID', async () => {
+      const newId = uuidv4();
+      await expect(testClient.webhook.get(newId)).rejects.toThrow(
+        W3StreamError
+      );
+    });
   });
 
   describe('Delete', () => {
@@ -192,6 +206,13 @@ describe('Webhook Service', () => {
       );
       expect(response).toBeDefined();
       expect(response.status).toBe('success');
+    });
+
+    it('Not exist ID', async () => {
+      const newId = uuidv4();
+      await expect(testClient.webhook.delete(newId)).rejects.toThrow(
+        W3StreamError
+      );
     });
 
     it('Invalid ID', async () => {

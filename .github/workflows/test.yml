@@ -1,8 +1,5 @@
-name: CI
-on:
-  pull_request:
-    branches:
-      - main
+name: Run unit tests
+on: [push]
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -16,13 +13,36 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Run Prettier
+        run: npm run prettier
+
+      - name: Install Jest
+        run: npm install jest
+
+      - name: Install dotenv
+        run: npm install dotenv --save
+
+      - name: Install uuid
+        run: npm install uuid
+
       - name: Create env file
         run: |
           touch .env
-          echo PUBLIC_KEY=${{ secrets.PUBLIC_KEY }} >> .env
-          echo SECRET_KEY=${{ secrets.SECRET_KEY }} >> .env
-          echo ANONYMOUS_PUBLIC_KEY=${{ secrets.ANONYMOUS_PUBLIC_KEY }} >> .env
-          echo ANONYMOUS_SECRET_KEY=${{ secrets.ANONYMOUS_SECRET_KEY }} >> .env
+          echo TEST_PUBLIC_KEY=${{ secrets.TEST_PUBLIC_KEY }} >> .env
+          echo TEST_SECRET_KEY=${{ secrets.TEST_SECRET_KEY }} >> .env
+          echo TEST_ANONYMOUS_PUBLIC_KEY=${{ secrets.TEST_ANONYMOUS_PUBLIC_KEY }} >> .env
+          echo TEST_ANONYMOUS_SECRET_KEY=${{ secrets.TEST_ANONYMOUS_SECRET_KEY }} >> .env
 
       - name: Run tests
         run: npm test
+
+      - name: Create Pull Request
+        if: success() && github.ref != 'refs/heads/main'
+        run: |
+          gh pr create \
+            -B main \
+            -H ${{ github.ref_name }} \
+            --title "Merge ${{ github.ref_name }} into main" \
+            --body "Created by Github action after successful tests"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
