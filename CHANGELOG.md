@@ -1,10 +1,7 @@
 # Changelog
 All changes to this project will be documented in this file.
 
-# Changelog
-All changes to this project will be documented in this file.
-
-## [1.0.6] - 2024-12-10
+## [1.0.6] - 2024-12-25
 - Add test case
 
 ## [1.0.5] - 2024-11-07

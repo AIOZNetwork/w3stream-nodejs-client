@@ -1,7 +1,7 @@
 import { expect } from '@jest/globals';
 import W3StreamError from '../src/W3StreamError';
 import { anonymousMockTestClient, mockTestClient } from './src/mockTestClient';
-
+import { v4 as uuidv4 } from 'uuid';
 let liveStreamKeyID: string;
 let streamId: string;
 const liveStreamKeyName = 'name';
@@ -56,6 +56,12 @@ describe('LiveStream Service', () => {
     it('Invalid Get Live Stream Key', async () => {
       await expect(
         testClient.liveStream.getLiveStreamKey('invalid-id')
+      ).rejects.toThrow(W3StreamError);
+    });
+    it('Not exist ID', async () => {
+      const newId = uuidv4();
+      await expect(
+        testClient.liveStream.getLiveStreamKey(newId)
       ).rejects.toThrow(W3StreamError);
     });
   });
@@ -126,6 +132,15 @@ describe('LiveStream Service', () => {
     it('Invalid Update Live Stream Key with ID is empty', async () => {
       await expect(
         testClient.liveStream.updateLiveStreamKey('', {
+          name: liveStreamKeyName,
+          save: true,
+        })
+      ).rejects.toThrow(W3StreamError);
+    });
+    it('Not exist ID', async () => {
+      const newId = uuidv4();
+      await expect(
+        testClient.liveStream.updateLiveStreamKey(newId, {
           name: liveStreamKeyName,
           save: true,
         })
@@ -246,6 +261,13 @@ describe('LiveStream Service', () => {
         testClient.liveStream.getStreaming('invalid-id', 'invalid-stream-id')
       ).rejects.toThrow(W3StreamError);
     });
+
+    it('Not exist ID', async () => {
+      const newId = uuidv4();
+      await expect(
+        testClient.liveStream.getStreaming(newId, newId)
+      ).rejects.toThrow(W3StreamError);
+    });
   });
 
   describe('getStreamings', () => {
@@ -277,6 +299,12 @@ describe('LiveStream Service', () => {
         testClient.liveStream.deleteLiveStreamVideo('invalid-id')
       ).rejects.toThrow(W3StreamError);
     });
+    it('Not exist ID', async () => {
+      const newId = uuidv4();
+      await expect(
+        testClient.liveStream.deleteLiveStreamVideo(newId)
+      ).rejects.toThrow(W3StreamError);
+    });
   });
 
   describe('deleteLiveStreamKey', () => {
@@ -295,6 +323,12 @@ describe('LiveStream Service', () => {
     it('Invalid Delete Live Stream Key with Invalid ID', async () => {
       await expect(
         testClient.liveStream.deleteLiveStreamKey('invalid-id')
+      ).rejects.toThrow(W3StreamError);
+    });
+    it('Not exist ID', async () => {
+      const newId = uuidv4();
+      await expect(
+        testClient.liveStream.deleteLiveStreamKey(newId)
       ).rejects.toThrow(W3StreamError);
     });
   });

@@ -2,11 +2,12 @@ import { expect } from '@jest/globals';
 import W3StreamError from '../src/W3StreamError';
 import { anonymousMockTestClient, mockTestClient } from './src/mockTestClient';
 import { openInvalidFile, openTestImageFile } from './Video.spec';
+import { v4 as uuidv4 } from 'uuid';
 
 let testPlaylistID: string | undefined;
-const testVideoIDOne = '16b0fb26-6d9c-4adc-a86e-026bd47a6a3a';
-const testVideoIDTwo = '824d80ee-266c-4b56-bd11-3f93cec25191';
-const testVideoIDThree = 'ffbe9d00-36d0-4776-8f03-b5fef10027f7';
+const testVideoIDOne = 'fdcaf04d-db3d-41af-8d2a-42f272ed556b';
+const testVideoIDTwo = '598b9aaa-f2dc-4622-9dfb-d1993a9c6165';
+const testVideoIDThree = 'ee8f0f53-a847-48b8-b6cf-811dc1a31c9d';
 let testFirstItemID: string | undefined;
 let testSecondItemID: string | undefined;
 let testThirdItemID: string | undefined;
@@ -105,6 +106,19 @@ describe('Playlist Service', () => {
         )
       ).rejects.toThrow(W3StreamError);
     });
+
+    it('Not exist ID', async () => {
+      const thumbnailFile = await openTestImageFile();
+      const newId = uuidv4();
+      await expect(
+        testClient.playlist.updatePlaylist(
+          newId,
+          thumbnailFile,
+          undefined,
+          testName
+        )
+      ).rejects.toThrow(W3StreamError);
+    });
   });
 
   describe('Get Playlist Public Info', () => {
@@ -118,6 +132,13 @@ describe('Playlist Service', () => {
     it('Invalid Playlist ID', async () => {
       await expect(
         testClient.playlist.getPlaylistPublicInfo('')
+      ).rejects.toThrow(W3StreamError);
+    });
+
+    it('Not exist ID', async () => {
+      const newId = uuidv4();
+      await expect(
+        testClient.playlist.getPlaylistPublicInfo(newId)
       ).rejects.toThrow(W3StreamError);
     });
   });
@@ -174,6 +195,15 @@ describe('Playlist Service', () => {
     it('Empty Request', async () => {
       await expect(
         testClient.playlist.addVideoToPlaylist(testPlaylistID as string, {})
+      ).rejects.toThrow(W3StreamError);
+    });
+
+    it('Not exist ID', async () => {
+      const newId = uuidv4();
+      await expect(
+        testClient.playlist.addVideoToPlaylist(newId, {
+          videoId: testVideoIDOne,
+        })
       ).rejects.toThrow(W3StreamError);
     });
   });
@@ -235,6 +265,15 @@ describe('Playlist Service', () => {
         testClient.playlist.getPlaylistById({
           id: testPlaylistID as string,
           sortBy: 'invalid' as 'created_at' | 'title' | 'duration',
+        })
+      ).rejects.toThrow(W3StreamError);
+    });
+
+    it('Not exist ID', async () => {
+      const newId = uuidv4();
+      await expect(
+        testClient.playlist.getPlaylistById({
+          id: newId,
         })
       ).rejects.toThrow(W3StreamError);
     });
@@ -337,6 +376,13 @@ describe('Playlist Service', () => {
         )
       ).rejects.toThrow(W3StreamError);
     });
+
+    it('Not exist ID', async () => {
+      const newId = uuidv4();
+      await expect(
+        testClient.playlist.removeVideoFromPlaylist(newId, newId)
+      ).rejects.toThrow(W3StreamError);
+    });
   });
 
   describe('Delete Playlist Thumbnail', () => {
@@ -357,6 +403,13 @@ describe('Playlist Service', () => {
     it('Invalid Playlist ID', async () => {
       await expect(
         testClient.playlist.deletePlaylistThumbnail('')
+      ).rejects.toThrow(W3StreamError);
+    });
+
+    it('Not exist ID', async () => {
+      const newId = uuidv4();
+      await expect(
+        testClient.playlist.deletePlaylistThumbnail(newId)
       ).rejects.toThrow(W3StreamError);
     });
   });
@@ -380,6 +433,13 @@ describe('Playlist Service', () => {
       await expect(testClient.playlist.deletePlaylistById('')).rejects.toThrow(
         W3StreamError
       );
+    });
+
+    it('Not exist ID', async () => {
+      const newId = uuidv4();
+      await expect(
+        testClient.playlist.deletePlaylistById(newId)
+      ).rejects.toThrow(W3StreamError);
     });
   });
 });
