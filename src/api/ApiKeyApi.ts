@@ -89,7 +89,7 @@ export default class ApiKeyApi {
 
   /**
    * This endpoint enables you to rename an API key from a specific project.
-   * Rename api key
+   * Rename API key
    * @param id api key id
    * @param request new api key name
    */
@@ -102,7 +102,7 @@ export default class ApiKeyApi {
 
   /**
    * This endpoint enables you to rename an API key from a specific project.
-   * Rename api key
+   * Rename API key
    * @param id api key id
    * @param request new api key name
    */

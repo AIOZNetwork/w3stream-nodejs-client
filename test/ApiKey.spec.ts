@@ -1,6 +1,7 @@
 import { expect } from '@jest/globals';
 import W3StreamError from '../src/W3StreamError';
 import { anonymousMockTestClient, mockTestClient } from './src/mockTestClient';
+import { v4 as uuidv4 } from 'uuid';
 
 let testApiKeyForUpdateAndDelete: string | undefined;
 const testApiKeyName = 'Test API Key';
@@ -86,6 +87,15 @@ describe('ApiKey Service', () => {
         })
       ).rejects.toThrow(W3StreamError);
     });
+
+    it('Not exist ID', async () => {
+      const newId = uuidv4();
+      await expect(
+        testClient.apiKey.update(newId, {
+          apiKeyName: 'Updated API Key',
+        })
+      ).rejects.toThrow(W3StreamError);
+    });
   });
 
   describe('Delete', () => {
@@ -111,6 +121,13 @@ describe('ApiKey Service', () => {
 
     it('Empty ID', async () => {
       await expect(testClient.apiKey.delete('')).rejects.toThrow(W3StreamError);
+    });
+
+    it('Not exist ID', async () => {
+      const newId = uuidv4();
+      await expect(testClient.apiKey.delete(newId)).rejects.toThrow(
+        W3StreamError
+      );
     });
   });
 

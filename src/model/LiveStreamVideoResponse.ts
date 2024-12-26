@@ -15,14 +15,18 @@ import Video from './Video.js';
 
 export default class LiveStreamVideoResponse {
   'assets'?: LiveStreamAssets;
+  'audioBitrate'?: number;
   'createdAt'?: string;
+  'currentView'?: number;
   'duration'?: number;
+  'frameRate'?: number;
   'id'?: string;
   'liveStreamKeyId'?: string;
   'qualities'?: Array<string>;
   'save'?: boolean;
   'status'?: string;
   'title'?: string;
+  'totalView'?: number;
   'updatedAt'?: string;
   'userId'?: string;
   'video'?: Video;
@@ -37,14 +41,32 @@ export default class LiveStreamVideoResponse {
       format: '',
     },
     {
+      name: 'audioBitrate',
+      baseName: 'audio_bitrate',
+      type: 'number',
+      format: '',
+    },
+    {
       name: 'createdAt',
       baseName: 'created_at',
       type: 'string',
       format: '',
     },
     {
+      name: 'currentView',
+      baseName: 'current_view',
+      type: 'number',
+      format: '',
+    },
+    {
       name: 'duration',
       baseName: 'duration',
+      type: 'number',
+      format: '',
+    },
+    {
+      name: 'frameRate',
+      baseName: 'frame_rate',
       type: 'number',
       format: '',
     },
@@ -82,6 +104,12 @@ export default class LiveStreamVideoResponse {
       name: 'title',
       baseName: 'title',
       type: 'string',
+      format: '',
+    },
+    {
+      name: 'totalView',
+      baseName: 'total_view',
+      type: 'number',
       format: '',
     },
     {
