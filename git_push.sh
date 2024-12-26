@@ -1,7 +1,7 @@
 #!/bin/sh
 npm install
 npm run prettier
-rm post-generate.sh .openapi-generator-ignore package-lock.json
+rm .openapi-generator-ignore package-lock.json
 
 git_user_id=$1
 git_repo_id=$2
