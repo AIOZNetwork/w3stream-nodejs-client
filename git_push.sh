@@ -26,6 +26,8 @@ fi
 if [ "$branch_suffix" = "" ]; then
     branch_suffix=$(date +%Y%m%d_%H%M%S)
     echo "[INFO] No branch name provided. Using timestamp: $branch_suffix"
+else
+    echo "[INFO] Using provided branch suffix: $branch_suffix"
 fi
 
 git add .
