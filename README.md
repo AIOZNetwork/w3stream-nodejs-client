@@ -84,7 +84,7 @@ import W3StreamClient from "@w3stream/nodejs-client";
 Method | Description | HTTP request
 ------------- | ------------- | -------------
 [**create()**](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/api/ApiKeyApi.md#create) | Create API key | **POST** `/api_keys`
-[**update()**](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/api/ApiKeyApi.md#update) | Rename API key | **PATCH** `/api_keys/{id}`
+[**update()**](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/api/ApiKeyApi.md#update) | Rename api key | **PATCH** `/api_keys/{id}`
 [**delete()**](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/api/ApiKeyApi.md#delete) | Delete API key | **DELETE** `/api_keys/{id}`
 [**list()**](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/api/ApiKeyApi.md#list) | Get list API keys | **GET** `/api_keys`
 
@@ -167,15 +167,6 @@ Method | Description | HTTP request
 [**delete()**](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/api/VideoChapterApi.md#delete) | Delete a video chapter | **DELETE** `/videos/{id}/chapters/{lan}`
 
 
-#### WatermarkApi
-
-Method | Description | HTTP request
-------------- | ------------- | -------------
-[**upload()**](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/api/WatermarkApi.md#upload) | Create a new watermark | **POST** `/watermarks`
-[**delete()**](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/api/WatermarkApi.md#delete) | Delete a watermark by ID | **DELETE** `/watermarks/{id}`
-[**list()**](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/api/WatermarkApi.md#list) | List all watermarks | **GET** `/watermarks`
-
-
 #### WebhookApi
 
 Method | Description | HTTP request
@@ -215,13 +206,9 @@ Method | Description | HTTP request
  - [CreateVideoChapterResponse](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/model/CreateVideoChapterResponse.md)
  - [CreateVideoRequest](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/model/CreateVideoRequest.md)
  - [CreateVideoResponse](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/model/CreateVideoResponse.md)
- - [CreateWatermarkData](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/model/CreateWatermarkData.md)
- - [CreateWatermarkResponse](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/model/CreateWatermarkResponse.md)
  - [CreateWebhookData](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/model/CreateWebhookData.md)
  - [CreateWebhookRequest](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/model/CreateWebhookRequest.md)
  - [CreateWebhookResponse](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/model/CreateWebhookResponse.md)
- - [GetAllWatermarkData](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/model/GetAllWatermarkData.md)
- - [GetAllWatermarkResponse](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/model/GetAllWatermarkResponse.md)
  - [GetApiKeysData](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/model/GetApiKeysData.md)
  - [GetApiKeysResponse](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/model/GetApiKeysResponse.md)
  - [GetLiveStreamKeyData](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/model/GetLiveStreamKeyData.md)
@@ -289,7 +276,6 @@ Method | Description | HTTP request
  - [VideoCaption](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/model/VideoCaption.md)
  - [VideoChapter](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/model/VideoChapter.md)
  - [VideoWatermark](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/model/VideoWatermark.md)
- - [Watermark](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/model/Watermark.md)
  - [Webhook](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/model/Webhook.md)
 
 
