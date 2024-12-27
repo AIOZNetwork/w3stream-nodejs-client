@@ -20,15 +20,6 @@ npm install @w3stream/nodejs-client
 yarn add @w3stream/nodejs-client
 ```
 
-
-### Development
-
-To build and compile the typescript sources to javascript use:
-```
-npm install
-npm run build
-```
-
 ### Code sample
 
 ```typescript
