@@ -10,8 +10,9 @@ let testVideoID: string;
 const title = 'Test Video';
 const description = 'Test Description';
 const testLang = 'en';
-
-const testVideoCaptionID = '598b9aaa-f2dc-4622-9dfb-d1993a9c6165';
+// eslint-disable-next-line prefer-const
+let deletedVideoLater: string[] = [];
+const testVideoCaptionID = '4746d73e-42f5-4853-b912-a28b97db6b31';
 
 async function getVideoFilePath(fileName: string): Promise<string> {
   return path.join(__dirname, '/data', fileName);
@@ -73,6 +74,9 @@ describe('Video Service', () => {
         title: 'Test Video',
         qualities: ['720p'],
       });
+      if (resp.data?.id) {
+        deletedVideoLater.push(resp.data?.id as string);
+      }
     });
 
     it('Valid Minimal Request', async () => {
@@ -81,6 +85,9 @@ describe('Video Service', () => {
         qualities: ['720p'],
       });
       expect(resp).toBeDefined();
+      if (resp.data?.id) {
+        deletedVideoLater.push(resp.data?.id as string);
+      }
     });
 
     it('Invalid Title - Empty', async () => {
@@ -576,6 +583,19 @@ describe('Video Service', () => {
       await expect(testClient.video.delete(newId)).rejects.toThrow(
         W3StreamError
       );
+    });
+
+    afterAll(async () => {
+      for (const id of deletedVideoLater) {
+        try {
+          await testClient.video.delete(id);
+        } catch (error) {
+          console.error(
+            `Failed to delete Live Stream Key with ID ${id}:`,
+            error
+          );
+        }
+      }
     });
   });
 });

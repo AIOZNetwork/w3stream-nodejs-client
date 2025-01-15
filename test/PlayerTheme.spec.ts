@@ -7,10 +7,11 @@ import { v4 as uuidv4 } from 'uuid';
 let testPlayerIDForUpdateAndDeleteAndGet: string | undefined;
 const playerName = 'Test Player Theme';
 const logoURL = 'https://example.com/logo.png';
-const testVideoForPlayer = '598b9aaa-f2dc-4622-9dfb-d1993a9c6165';
+const testVideoForPlayer = '1f625e54-308d-401e-aa67-12f86eff6d1a';
 
 const testClient = mockTestClient();
 const anonymousTestClient = anonymousMockTestClient();
+const deletedPlayerThemesLater: string[] = [];
 
 describe('Players Service', () => {
   describe('create', () => {
@@ -52,6 +53,9 @@ describe('Players Service', () => {
         },
       });
       expect(response).toBeDefined();
+      if (response.data?.playerTheme?.id) {
+        deletedPlayerThemesLater.push(response.data?.playerTheme?.id as string);
+      }
     });
 
     it('Invalid Color Code', async () => {
@@ -72,6 +76,9 @@ describe('Players Service', () => {
         },
       });
       expect(response).toBeDefined();
+      if (response.data?.playerTheme?.id) {
+        deletedPlayerThemesLater.push(response.data?.playerTheme?.id as string);
+      }
     });
 
     it('Invalid Size Format', async () => {
@@ -384,5 +391,14 @@ describe('Players Service', () => {
         W3StreamError
       );
     });
+  });
+  afterAll(async () => {
+    for (const id of deletedPlayerThemesLater) {
+      try {
+        await testClient.players.delete(id);
+      } catch (error) {
+        console.error(`Failed to delete Player Theme with ID ${id}:`, error);
+      }
+    }
   });
 });
