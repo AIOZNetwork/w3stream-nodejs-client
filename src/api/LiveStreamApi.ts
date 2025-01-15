@@ -27,6 +27,7 @@ import GetStreamingsResponse from '../model/GetStreamingsResponse';
 import ResponseSuccess from '../model/ResponseSuccess';
 import UpdateLiveStreamKeyRequest from '../model/UpdateLiveStreamKeyRequest';
 import UpdateLiveStreamKeyResponse from '../model/UpdateLiveStreamKeyResponse';
+import UpdateLiveStreamVideoRequest from '../model/UpdateLiveStreamVideoRequest';
 
 /**
  * no description
@@ -219,35 +220,47 @@ export default class LiveStreamApi {
   }
 
   /**
-   * Delete a live stream video by ID
+   * Delete live stream are created by a specific live stream key
    * Delete live stream video
-   * @param id Live stream video ID
+   * @param id Live stream key ID
+   * @param streamId Streaming ID
    */
-  public async deleteLiveStreamVideo(id: string): Promise<ResponseSuccess> {
-    return this.deleteLiveStreamVideoWithResponseHeaders(id).then(
+  public async deleteStreaming(
+    id: string,
+    streamId: string
+  ): Promise<ResponseSuccess> {
+    return this.deleteStreamingWithResponseHeaders(id, streamId).then(
       (res) => res.body
     );
   }
 
   /**
-   * Delete a live stream video by ID
+   * Delete live stream are created by a specific live stream key
    * Delete live stream video
-   * @param id Live stream video ID
+   * @param id Live stream key ID
+   * @param streamId Streaming ID
    */
-  public async deleteLiveStreamVideoWithResponseHeaders(
-    id: string
+  public async deleteStreamingWithResponseHeaders(
+    id: string,
+    streamId: string
   ): Promise<{ headers: ApiResponseHeaders; body: ResponseSuccess }> {
     const queryParams: QueryOptions = {};
     queryParams.headers = {};
     if (id === null || id === undefined) {
       throw new Error(
-        'Required parameter id was null or undefined when calling deleteLiveStreamVideo.'
+        'Required parameter id was null or undefined when calling deleteStreaming.'
+      );
+    }
+    if (streamId === null || streamId === undefined) {
+      throw new Error(
+        'Required parameter streamId was null or undefined when calling deleteStreaming.'
       );
     }
     // Path Params
-    const localVarPath = '/live_streams/{id}/videos'
+    const localVarPath = '/live_streams/{id}/streamings/{stream_id}'
       .substring(1)
-      .replace('{' + 'id' + '}', encodeURIComponent(String(id)));
+      .replace('{' + 'id' + '}', encodeURIComponent(String(id)))
+      .replace('{' + 'stream_id' + '}', encodeURIComponent(String(streamId)));
 
     queryParams.method = 'DELETE';
 
@@ -770,6 +783,76 @@ export default class LiveStreamApi {
           'UpdateLiveStreamKeyResponse',
           ''
         ) as UpdateLiveStreamKeyResponse,
+      };
+    });
+  }
+
+  /**
+   * Update live stream video for a specific live stream key
+   * Update live stream video
+   * @param id Live stream key ID
+   * @param data data
+   */
+  public async updateLiveStreamVideo(
+    id: string,
+    data: UpdateLiveStreamVideoRequest = {}
+  ): Promise<ResponseSuccess> {
+    return this.updateLiveStreamVideoWithResponseHeaders(id, data).then(
+      (res) => res.body
+    );
+  }
+
+  /**
+   * Update live stream video for a specific live stream key
+   * Update live stream video
+   * @param id Live stream key ID
+   * @param data data
+   */
+  public async updateLiveStreamVideoWithResponseHeaders(
+    id: string,
+    data: UpdateLiveStreamVideoRequest = {}
+  ): Promise<{ headers: ApiResponseHeaders; body: ResponseSuccess }> {
+    const queryParams: QueryOptions = {};
+    queryParams.headers = {};
+    if (id === null || id === undefined) {
+      throw new Error(
+        'Required parameter id was null or undefined when calling updateLiveStreamVideo.'
+      );
+    }
+    if (data === null || data === undefined) {
+      throw new Error(
+        'Required parameter data was null or undefined when calling updateLiveStreamVideo.'
+      );
+    }
+    // Path Params
+    const localVarPath = '/live_streams/{id}/streamings'
+      .substring(1)
+      .replace('{' + 'id' + '}', encodeURIComponent(String(id)));
+
+    // Body Params
+    const contentType = ObjectSerializer.getPreferredMediaType([
+      'application/json',
+    ]);
+    queryParams.headers['Content-Type'] = contentType;
+
+    queryParams.body = ObjectSerializer.stringify(
+      ObjectSerializer.serialize(data, 'UpdateLiveStreamVideoRequest', ''),
+      contentType
+    );
+
+    queryParams.method = 'PUT';
+
+    return this.httpClient.call(localVarPath, queryParams).then((response) => {
+      return {
+        headers: response.headers,
+        body: ObjectSerializer.deserialize(
+          ObjectSerializer.parse(
+            response.body,
+            response.headers['content-type']
+          ),
+          'ResponseSuccess',
+          ''
+        ) as ResponseSuccess,
       };
     });
   }

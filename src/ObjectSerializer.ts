@@ -94,6 +94,7 @@ import Theme from './model/Theme';
 import UpdateLiveStreamKeyData from './model/UpdateLiveStreamKeyData';
 import UpdateLiveStreamKeyRequest from './model/UpdateLiveStreamKeyRequest';
 import UpdateLiveStreamKeyResponse from './model/UpdateLiveStreamKeyResponse';
+import UpdateLiveStreamVideoRequest from './model/UpdateLiveStreamVideoRequest';
 import UpdatePlayerThemeRequest from './model/UpdatePlayerThemeRequest';
 import UpdatePlayerThemeResponse from './model/UpdatePlayerThemeResponse';
 import UpdateVideoInfoRequest from './model/UpdateVideoInfoRequest';
@@ -217,6 +218,7 @@ const typeMap: { [index: string]: any } = {
   UpdateLiveStreamKeyData: UpdateLiveStreamKeyData,
   UpdateLiveStreamKeyRequest: UpdateLiveStreamKeyRequest,
   UpdateLiveStreamKeyResponse: UpdateLiveStreamKeyResponse,
+  UpdateLiveStreamVideoRequest: UpdateLiveStreamVideoRequest,
   UpdatePlayerThemeRequest: UpdatePlayerThemeRequest,
   UpdatePlayerThemeResponse: UpdatePlayerThemeResponse,
   UpdateVideoInfoRequest: UpdateVideoInfoRequest,
