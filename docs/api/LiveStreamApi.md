@@ -7,7 +7,7 @@ All URIs are relative to *http://localhost/api*
 | [**createLiveStreamKey()**](LiveStreamApi.md#createLiveStreamKey) | Create live stream key | **POST** /live_streams |
 | [**createStreaming()**](LiveStreamApi.md#createStreaming) | Create a new live stream video | **POST** /live_streams/{id}/streamings |
 | [**deleteLiveStreamKey()**](LiveStreamApi.md#deleteLiveStreamKey) | Delete live stream key | **DELETE** /live_streams/{id} |
-| [**deleteLiveStreamVideo()**](LiveStreamApi.md#deleteLiveStreamVideo) | Delete live stream video | **DELETE** /live_streams/{id}/videos |
+| [**deleteStreaming()**](LiveStreamApi.md#deleteStreaming) | Delete live stream video | **DELETE** /live_streams/{id}/streamings/{stream_id} |
 | [**getLiveStreamKey()**](LiveStreamApi.md#getLiveStreamKey) | Get live stream key | **GET** /live_streams/{id} |
 | [**getLiveStreamKeys()**](LiveStreamApi.md#getLiveStreamKeys) | Get live stream key list | **GET** /live_streams |
 | [**getLiveStreamPlayerInfo()**](LiveStreamApi.md#getLiveStreamPlayerInfo) | Get live stream video public | **GET** /live_streams/player/{id}/videos |
@@ -16,6 +16,7 @@ All URIs are relative to *http://localhost/api*
 | [**getStreaming()**](LiveStreamApi.md#getStreaming) | Get live stream video streaming | **GET** /live_streams/{id}/streamings/{stream_id} |
 | [**getStreamings()**](LiveStreamApi.md#getStreamings) | Get live stream video streamings | **GET** /live_streams/{id}/streamings |
 | [**updateLiveStreamKey()**](LiveStreamApi.md#updateLiveStreamKey) | Update live stream key | **PUT** /live_streams/{id} |
+| [**updateLiveStreamVideo()**](LiveStreamApi.md#updateLiveStreamVideo) | Update live stream video | **PUT** /live_streams/{id}/streamings |
 
 
 <a name="createLiveStreamKey"></a>
@@ -85,17 +86,18 @@ Promise<[**ResponseSuccess**](../model/ResponseSuccess.md)>.
 
 ---
 
-<a name="deleteLiveStreamVideo"></a>
-## **`deleteLiveStreamVideo()` - Delete live stream video**
+<a name="deleteStreaming"></a>
+## **`deleteStreaming()` - Delete live stream video**
 
 
-Delete a live stream video by ID
+Delete live stream are created by a specific live stream key
 
 ### Parameters
 
 | Name | Type | Required | Description |
 | ------------- | ------------- | ------------- | ------------- |
- | **id** | **string**| **yes**| Live stream video ID |
+ | **id** | **string**| **yes**| Live stream key ID |
+ | **streamId** | **string**| **yes**| Streaming ID |
 
 
 ### Return type
@@ -284,6 +286,29 @@ Update a live stream key by ID
 ### Return type
 
 Promise<[**UpdateLiveStreamKeyResponse**](../model/UpdateLiveStreamKeyResponse.md)>.
+
+
+
+
+---
+
+<a name="updateLiveStreamVideo"></a>
+## **`updateLiveStreamVideo()` - Update live stream video**
+
+
+Update live stream video for a specific live stream key
+
+### Parameters
+
+| Name | Type | Required | Description |
+| ------------- | ------------- | ------------- | ------------- |
+ | **id** | **string**| **yes**| Live stream key ID |
+ | **data** | [**UpdateLiveStreamVideoRequest**](../model/UpdateLiveStreamVideoRequest.md)| **yes**| data |
+
+
+### Return type
+
+Promise<[**ResponseSuccess**](../model/ResponseSuccess.md)>.
 
 
 

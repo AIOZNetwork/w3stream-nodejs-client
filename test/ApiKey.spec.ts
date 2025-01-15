@@ -8,6 +8,7 @@ const testApiKeyName = 'Test API Key';
 
 const testClient = mockTestClient();
 const anonymousTestClient = anonymousMockTestClient();
+const deleteApiKeyLater: string[] = [];
 
 describe('ApiKey Service', () => {
   describe('Create', () => {
@@ -19,6 +20,9 @@ describe('ApiKey Service', () => {
       });
       expect(response).toBeDefined();
       testApiKeyForUpdateAndDelete = response.data?.apiKey?.id;
+      if (testApiKeyForUpdateAndDelete) {
+        deleteApiKeyLater.push(testApiKeyForUpdateAndDelete);
+      }
     });
 
     it('Empty Name', async () => {

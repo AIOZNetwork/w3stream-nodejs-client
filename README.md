@@ -87,7 +87,7 @@ Method | Description | HTTP request
 [**createLiveStreamKey()**](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/api/LiveStreamApi.md#createLiveStreamKey) | Create live stream key | **POST** `/live_streams`
 [**createStreaming()**](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/api/LiveStreamApi.md#createStreaming) | Create a new live stream video | **POST** `/live_streams/{id}/streamings`
 [**deleteLiveStreamKey()**](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/api/LiveStreamApi.md#deleteLiveStreamKey) | Delete live stream key | **DELETE** `/live_streams/{id}`
-[**deleteLiveStreamVideo()**](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/api/LiveStreamApi.md#deleteLiveStreamVideo) | Delete live stream video | **DELETE** `/live_streams/{id}/videos`
+[**deleteStreaming()**](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/api/LiveStreamApi.md#deleteStreaming) | Delete live stream video | **DELETE** `/live_streams/{id}/streamings/{stream_id}`
 [**getLiveStreamKey()**](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/api/LiveStreamApi.md#getLiveStreamKey) | Get live stream key | **GET** `/live_streams/{id}`
 [**getLiveStreamKeys()**](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/api/LiveStreamApi.md#getLiveStreamKeys) | Get live stream key list | **GET** `/live_streams`
 [**getLiveStreamPlayerInfo()**](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/api/LiveStreamApi.md#getLiveStreamPlayerInfo) | Get live stream video public | **GET** `/live_streams/player/{id}/videos`
@@ -96,6 +96,7 @@ Method | Description | HTTP request
 [**getStreaming()**](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/api/LiveStreamApi.md#getStreaming) | Get live stream video streaming | **GET** `/live_streams/{id}/streamings/{stream_id}`
 [**getStreamings()**](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/api/LiveStreamApi.md#getStreamings) | Get live stream video streamings | **GET** `/live_streams/{id}/streamings`
 [**updateLiveStreamKey()**](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/api/LiveStreamApi.md#updateLiveStreamKey) | Update live stream key | **PUT** `/live_streams/{id}`
+[**updateLiveStreamVideo()**](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/api/LiveStreamApi.md#updateLiveStreamVideo) | Update live stream video | **PUT** `/live_streams/{id}/streamings`
 
 
 #### PlayersApi
@@ -257,6 +258,7 @@ Method | Description | HTTP request
  - [UpdateLiveStreamKeyData](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/model/UpdateLiveStreamKeyData.md)
  - [UpdateLiveStreamKeyRequest](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/model/UpdateLiveStreamKeyRequest.md)
  - [UpdateLiveStreamKeyResponse](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/model/UpdateLiveStreamKeyResponse.md)
+ - [UpdateLiveStreamVideoRequest](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/model/UpdateLiveStreamVideoRequest.md)
  - [UpdatePlayerThemeRequest](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/model/UpdatePlayerThemeRequest.md)
  - [UpdatePlayerThemeResponse](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/model/UpdatePlayerThemeResponse.md)
  - [UpdateVideoInfoRequest](https://github.com/AIOZNetwork/w3stream-nodejs-client/blob/main/docs/model/UpdateVideoInfoRequest.md)
